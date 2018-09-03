@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 /**
  * @author lin
  * @ClassName AdminServiceImpl
- * @date 2018/8/31 16:50
+ * @date 2018/9/3 16:50
  * @description
  **/
 
@@ -28,9 +28,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public ResponseDTO<Employee> login(Employee employee, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
 
+        String getPassword = employeeDao.queryEmployeeByAccount(employee.getAccount()).getPassword();
 
-
-        if(!employeeDao.queryEmployeeByAccount(employee.getAccount()).getPassword().equals(employee.getPassword())){
+        if(!getPassword.equals(employee.getPassword())){
             return new ResponseDTO<>(101,"账号与密码不匹配",null);
         }
 

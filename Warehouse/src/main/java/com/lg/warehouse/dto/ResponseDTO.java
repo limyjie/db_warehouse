@@ -5,7 +5,7 @@ import org.springframework.lang.Nullable;
 /**
  * @author lin
  * @ClassName ResponseDTO
- * @date 2018/8/31 15:56
+ * @date 2018/9/39 15:56
  * @description
  **/
 public class ResponseDTO<T> {
