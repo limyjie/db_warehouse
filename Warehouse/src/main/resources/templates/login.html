@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>用户登录</title>
+    <title>管理员登录</title>
 </head>
 <body>
+<input type="text" id="text_account" value="root"/>
+<input type="text" id="text_password" value="root"/>
+<button onclick="startLogin()">登录</button>
 
 </body>
+
+
+<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js" th:src="@{js/jquery-3.2.1.min.js}"></script>
+<script type="text/javascript">
+
+    function startLogin() {
+        var requestURL = "employee/login";
+        var account = $("#text_account").val();
+        var password =$("#text_password").val();
+        var openURL = "/index";
+
+        var data={
+            "account":account,
+            "password":password
+        };
+
+        $.ajax({
+            type: "POST",
+            url: requestURL,
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(data),
+            async: true,
+            success: function (result) {
+
+                if (result.status == 0) {//成功
+
+                    console.log(result.msg);
+                    window.open(openURL,"_self");
+
+                } else  {
+                    console.log(result.msg);
+
+                }
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+    }
+</script>
 </html>

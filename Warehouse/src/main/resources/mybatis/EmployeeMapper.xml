@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lg.warehouse.dao.EmployeeDAO">
+
+  <select id="queryEmployeeByAccount" parameterType="String" resultType="com.lg.warehouse.entity.Employee">
+      SELECT *
+      FROM tb_employee
+      WHERE account=#{account}
+  </select>
+
+</mapper>

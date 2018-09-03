@@ -17,4 +17,14 @@ public class HttpController {
     public String getLoginPage(){
         return "login";
     }
+
+    @GetMapping("/register")
+    public String getRegisterPage(){
+        return "register";
+    }
+
+    @GetMapping("/index")
+    public String getIndexPage(){
+        return "index";
+    }
 }
