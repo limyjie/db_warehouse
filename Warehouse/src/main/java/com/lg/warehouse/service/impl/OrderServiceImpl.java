@@ -5,6 +5,7 @@ import com.lg.warehouse.dto.ResponseDTO;
 import com.lg.warehouse.entity.Order;
 import com.lg.warehouse.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author lin
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @date 2018/9/3 19:44
  * @description
  **/
+
+@Service
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
