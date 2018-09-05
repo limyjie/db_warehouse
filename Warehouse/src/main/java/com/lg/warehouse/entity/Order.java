@@ -42,6 +42,50 @@ public class Order {
     }
 
 
+    public void setOperator(String operator) {
+        this.operator = operator;
+    }
+
+    public void setGoodsID(String goodsID) {
+        this.goodsID = goodsID;
+    }
+
+    public void setGoodsNum(String goodsNum) {
+        this.goodsNum = goodsNum;
+    }
+
+    public void setTotalValue(String totalValue) {
+        this.totalValue = totalValue;
+    }
+
+    public void setFromStorageID(String fromStorageID) {
+        this.fromStorageID = fromStorageID;
+    }
+
+    public void setToStorageID(String toStorageID) {
+        this.toStorageID = toStorageID;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
+    public void setExecuted(String executed) {
+        this.executed = executed;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public void setLastModifyTime(Timestamp lastModifyTime) {
+        this.lastModifyTime = lastModifyTime;
+    }
+
     public String getOperator() {
         return operator;
     }
