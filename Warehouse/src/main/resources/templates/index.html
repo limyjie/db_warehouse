@@ -3,8 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <link rel="stylesheet" href="../static/css/info.css" />
+    <style>
+        #b{
+            width:500px;
+            border: 1px solid white;
+            margin-left: 400px;
+            margin-top: 100px;
+            text-align: right;
+        }
+        body{
+           background-color: aliceblue;
+        }
+    </style>
 </head>
 <body>
-目录：
+<div id="b">
+    <form action="" class="elegant-aero">
+        <label>
+            <span>货物号：</span>
+            <input type="text" required="required" />
+        </label>
+        <label>
+            <span>货物数量：</span>
+            <input type="number" name="points" min="1" />
+        </label>
+        <label>
+            <span>总金额：</span>
+            <input type="text" />
+        </label>
+        <label>
+            <span>出货仓库号：</span>
+            <input type="text" required="required">
+        </label>
+        <label>
+            <span>到货仓库号：</span>
+            <input type="text" />
+        </label>
+        <label>
+            <span>具体位置：</span>
+            <input type="text" list="url_list" name="text"/>
+            <datalist id="url_list">
+                <option value="1号" />
+                <option value="2号" />
+                <option value="3号" />
+            </datalist>
+        </label>
+        <label>
+            <span>&nbsp;</span>
+            <input type="submit" class="button" value="入库">&nbsp;&nbsp;
+            <input type="submit" class="button" value="出库">&nbsp;&nbsp;
+            <input type="submit" class="button" value="转移">&nbsp;&nbsp;
+        </label>
+    </form>
+</div>
 </body>
 </html>
