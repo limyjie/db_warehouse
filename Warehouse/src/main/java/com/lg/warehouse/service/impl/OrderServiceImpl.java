@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * @author lin
@@ -49,6 +50,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public ResponseDTO<Order> addOrder(Order order, Employee employee) {
 
+        order.setOperator(employee.getAccount());
+        order.setCreateTime(new Timestamp(System.currentTimeMillis()));
+        order.setExecuted("F");
+        order.setLastModifyTime(new Timestamp(System.currentTimeMillis()));
+        order.setDirection("In");
 
         ResponseDTO<Order> responseDTO;
 
@@ -69,18 +75,15 @@ public class OrderServiceImpl implements OrderService {
             return new ResponseDTO<>(401,"仓库号不存在",null);
         }
 
-        if(getWarehouse.getRemain()<Long.valueOf(order.getGoodsNum())){
-            return new ResponseDTO<>(401,"仓库剩余容量不足",null);
-        }
+
+        long num = Long.valueOf(order.getGoodsNum());
+        double value = Double.valueOf(getGoods.getPrice());
+        double total = num*value;
+        System.out.println("total price is "+ total);
+
+        order.setTotalValue(String.valueOf(total));
 
 
-        if(!order.getDirection().equals("In")){
-            return new ResponseDTO<>(401,"该订单不为入库订单",null);
-        }
-
-        order.setExecuted("F");
-        order.setCreateTime(new Timestamp(System.currentTimeMillis()));
-        order.setOperator(employee.getAccount());
 
         System.out.println("getGoods"+getGoods.toString());
 
@@ -93,4 +96,49 @@ public class OrderServiceImpl implements OrderService {
 
         return new ResponseDTO<>(0,"success",null);
     }
+
+    @Override
+    public ResponseDTO<List<Order>> queryOrders() {
+
+        List<Order> orders = orderDAO.queryAllOrders();
+
+        if(orders==null){
+            return new ResponseDTO<>(303,"orders null",null);
+        }
+
+        for(Order order:orders){
+            System.out.println(order.toString());
+        }
+
+
+        return new ResponseDTO<>(0,"orders success",orders);
+    }
+
+    @Override
+    public ResponseDTO<List<Order>> queryUnfinishedOrders() {
+        List<Order> orders = orderDAO.queryUnfinishedOrders();
+
+        if(orders==null){
+            return new ResponseDTO<>(303,"unfinished orders null",null);
+        }
+
+
+        return new ResponseDTO<>(0,"unfinished orders success",orders);
+    }
+
+    @Override
+    public ResponseDTO<List<Order>> queryFinishOrders() {
+        List<Order> orders = orderDAO.queryFinishedOrders();
+
+        if(orders==null){
+            return new ResponseDTO<>(303,"finished orders null",null);
+        }
+
+
+        return new ResponseDTO<>(0,"finished orders success",orders);
+    }
+
+
+
+
 }

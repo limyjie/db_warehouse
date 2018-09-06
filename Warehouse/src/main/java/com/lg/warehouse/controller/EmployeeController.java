@@ -5,6 +5,7 @@ import com.lg.warehouse.dto.ResponseDTO;
 import com.lg.warehouse.entity.Employee;
 import com.lg.warehouse.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +33,7 @@ public class EmployeeController {
     public ResponseDTO login(@RequestBody String params, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
 
         Employee employee = JSON.parseObject(params,Employee.class);
-        System.out.println(employee.toString());
+        System.out.println("going to return"+employee.toString());
         return employeeService.login(employee, httpServletRequest, httpServletResponse);
     }
 }

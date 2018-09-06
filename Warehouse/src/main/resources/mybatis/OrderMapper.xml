@@ -9,5 +9,25 @@
     VALUES (#{operator},#{goodsID},#{goodsNum},#{totalValue},#{fromStorageID},#{toStorageID},#{location},#{direction},#{executed},#{createTime},#{lastModifyTime})
 
 </insert>
+    
+    <select id="queryAllOrders" resultType="com.lg.warehouse.entity.Order">
+        
+        SELECT *
+        FROM tb_order
+    </select>
+    
+    <select id="queryUnfinishedOrders" resultType="com.lg.warehouse.entity.Order">
+        SELECT *
+        FROM tb_order
+        WHERE executed='F'
+    </select>
+
+    <select id="queryFinishedOrders" resultType="com.lg.warehouse.entity.Order">
+        SELECT *
+        FROM tb_order
+        WHERE executed='T'
+    </select>
+
+
 
 </mapper>

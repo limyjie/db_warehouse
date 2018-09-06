@@ -27,4 +27,9 @@ public class HttpController {
     public String getIndexPage(){
         return "index";
     }
+
+    @GetMapping("/query")
+    public String getQueryPage(){
+        return "query";
+    }
 }

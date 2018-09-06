@@ -4,6 +4,9 @@ import com.lg.warehouse.dao.OrderDAO;
 import com.lg.warehouse.dto.ResponseDTO;
 import com.lg.warehouse.entity.Employee;
 import com.lg.warehouse.entity.Order;
+import org.aspectj.weaver.ast.Or;
+
+import java.util.List;
 
 /**
  * @author lin
@@ -13,4 +16,10 @@ import com.lg.warehouse.entity.Order;
  **/
 public interface OrderService {
     ResponseDTO<Order> addOrder(Order order, Employee employee);
+
+    ResponseDTO<List<Order>> queryOrders();
+
+    ResponseDTO<List<Order>> queryUnfinishedOrders();
+
+    ResponseDTO<List<Order>> queryFinishOrders();
 }

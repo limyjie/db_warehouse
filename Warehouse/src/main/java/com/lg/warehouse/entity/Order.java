@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 public class Order {
 
     //必要参数
-    private String operator;
+    private String operatorAccount;
     private String goodsID;
     private String goodsNum;
     //可选参数
@@ -24,10 +24,13 @@ public class Order {
     private Timestamp createTime;
     private Timestamp lastModifyTime;
 
+    public Order() {
+    }
+
     @Override
     public String toString() {
         return "Order{" +
-                "operator='" + operator + '\'' +
+                "operatorAccount='" + operatorAccount + '\'' +
                 ", goodsID='" + goodsID + '\'' +
                 ", goodsNum='" + goodsNum + '\'' +
                 ", totalValue='" + totalValue + '\'' +
@@ -41,9 +44,15 @@ public class Order {
                 '}';
     }
 
+    public Order(String goodsID, String goodsNum, String toStorageID, String location) {
+        this.goodsID = goodsID;
+        this.goodsNum = goodsNum;
+        this.toStorageID = toStorageID;
+        this.location = location;
+    }
 
-    public void setOperator(String operator) {
-        this.operator = operator;
+    public void setOperator(String operatorAccount) {
+        this.operatorAccount = operatorAccount;
     }
 
     public void setGoodsID(String goodsID) {
@@ -87,7 +96,7 @@ public class Order {
     }
 
     public String getOperator() {
-        return operator;
+        return operatorAccount;
     }
 
     public String getGoodsID() {
@@ -132,7 +141,7 @@ public class Order {
 
     private Order(Builder builder){
 
-        this.operator = builder.operator;
+        this.operatorAccount = builder.operatorAccount;
         this.goodsID = builder.goodsID;
         this.goodsNum = builder.goodsNum;
         this.createTime = builder.createTime;
@@ -149,7 +158,7 @@ public class Order {
 
     public static class Builder{
 
-        private String operator;
+        private String operatorAccount;
         private String goodsID;
         private String goodsNum;
         private String totalValue;
@@ -162,7 +171,7 @@ public class Order {
         private Timestamp lastModifyTime;
 
         public Builder(String operatorAccount,String goodsID,String goodsNum){
-            this.operator = operatorAccount;
+            this.operatorAccount = operatorAccount;
             this.goodsID = goodsID;
             this.goodsNum = goodsNum;
         }
