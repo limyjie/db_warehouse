@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 public class Order {
 
     //必要参数
+    private String orderID;
     private String operatorAccount;
     private String goodsID;
     private String goodsNum;
@@ -30,6 +31,7 @@ public class Order {
     @Override
     public String toString() {
         return "Order{" +
+                "orderID='" + orderID + '\'' +
                 "operatorAccount='" + operatorAccount + '\'' +
                 ", goodsID='" + goodsID + '\'' +
                 ", goodsNum='" + goodsNum + '\'' +
@@ -44,7 +46,25 @@ public class Order {
                 '}';
     }
 
-    public Order(String goodsID, String goodsNum, String toStorageID, String location) {
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
+
+    public void setOperatorAccount(String operatorAccount) {
+        this.operatorAccount = operatorAccount;
+    }
+
+    public String getOrderID() {
+
+        return orderID;
+    }
+
+    public String getOperatorAccount() {
+        return operatorAccount;
+    }
+
+    public Order(String orderID ,String goodsID, String goodsNum, String toStorageID, String location) {
+        this.orderID = orderID;
         this.goodsID = goodsID;
         this.goodsNum = goodsNum;
         this.toStorageID = toStorageID;
