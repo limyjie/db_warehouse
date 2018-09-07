@@ -55,8 +55,6 @@
 
 <div class="div">
     <button class="btn" onclick="queryOrders()" >查询所有订单</button>
-    <button class="btn" onclick="queryFinishedOrders()" >查询所有已完成订单</button>
-    <button class="btn" onclick="queryUnfinishedOrders()" >查询所有未完成订单</button>
 </div>
 
 <table id="rounded-corner">
@@ -73,19 +71,9 @@
 
     function queryOrders() {
         var requestURL = "order/allOrders";
-
-       getData(requestURL);
-    }
-
-    function queryUnfinishedOrders() {
-        var requestURL = "order/unfinishedOrders";
         getData(requestURL);
     }
 
-    function queryFinishedOrders() {
-        var requestURL = "order/finishedOrders";
-        getData(requestURL);
-    }
     //查询库房内的货物
     function queryGoodsByWarehouseID() {
         var requestURL = "order/warehouseGoods";
@@ -132,7 +120,7 @@
 
                     var array = result.data;
 
-                    $('#orderList').append( "<th scope='col'>订单编号</th>\\n\" +\n" +
+                    $('#orderList').append( "<th scope='col'>订单编号</th>" +
                                             "<th scope='col'>操作员</th>"+
                                             "<th scope='col'>货物编号</th>"+
                                             "<th scope='col'>货物数量</th>" +
