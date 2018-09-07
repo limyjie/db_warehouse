@@ -27,7 +27,6 @@ a{text-decoration:none;}
 .channel dt{background-image:url(../static/img/left/channel.png)}
 .syetem_management dt{background-image:url(../static/img/left/syetem_management.png)}
 .source dt{background-image:url(../static/img/left/source.png)}
-.statistics dt{background-image:url(../static/img/left/statistics.png)}
 .leftsidebar_box dl dd:last-child{padding-bottom:10px;}
 .rightside {width:100%;height: 800px;margin-left: 160px;}
 
@@ -50,27 +49,26 @@ a{text-decoration:none;}
 	
 		<dl class="channel">
 
-			<dt onclick="menuClick('query.html')">订单查询<img src="../static/img/left/select_xl01.png"></dt>
+			<dt>订单查询<img src="../static/img/left/select_xl01.png"></dt>
+			<dd onclick="menuClick('allOrder.html')" class="first_dd"><a href="#">所有订单</a></dd>
+			<dd onclick="menuClick('finishedOrder.html')" ><a href="#">已完成订单</a></dd>
+			<dd onclick="menuClick('unfinishedOrder.html')"><a href="#">未完成订单</a></dd>
+			<dd><a href="#">查找订单[id]</a></dd>
 
 		</dl>
-	
+
+		<dl class="source">
+			<dt>库房管理<img src="../static/img/left/select_xl01.png" th:src="@{img/left/select_xl01.png}"></dt>
+			<dd class="first_dd"><a href="#">查询库房</a></dd>
+			<dd><a href="#">添加库房</a></dd>
+			<dd><a href="#">删除库房</a></dd>
+		</dl>
+
 		<dl class="syetem_management">
 			<dt>系统管理<img src="../static/img/left/select_xl01.png" th:src="@{img/left/select_xl01.png}"></dt>
 			<dd class="first_dd"><a href="#">后台用户管理</a></dd>
 			<dd><a href="#">供应商管理</a></dd>
 			<dd><a href="#">修改用户密码</a></dd>
-		</dl>
-	
-		<dl class="source">
-			<dt>货物类型管理<img src="../static/img/left/select_xl01.png" th:src="@{img/left/select_xl01.png}"></dt>
-			<dd class="first_dd"><a href="#">服饰</a></dd>
-			<dd><a href="#">生活用品</a></dd>
-			<dd><a href="#">牛奶饮品</a></dd>
-		</dl>
-	
-		<dl class="statistics">
-			<dt>统计分析<img src="../static/img/left/select_xl01.png" th:src="@{img/left/select_xl01.png}"></dt>
-			<dd class="first_dd"><a href="#">客户统计</a></dd>
 		</dl>
 	
 	</div>

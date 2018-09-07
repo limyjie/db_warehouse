@@ -28,10 +28,16 @@ public class HttpController {
         return "index";
     }
 
-    @GetMapping("/query")
+    @GetMapping("/allOrder")
     public String getQueryPage(){
-        return "query";
+        return "allOrder";
     }
+
+    @GetMapping("/finishedOrder")
+    public String getQuery1Page(){ return "finishedOrder"; }
+
+    @GetMapping("/unfinishedOrder")
+    public String getQuery2Page(){ return "unfinishedOrder"; }
 
     @GetMapping(value = "navigation")
     public String getNavigationPage(){
