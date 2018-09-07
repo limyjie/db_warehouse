@@ -3,13 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>订单查询</title>
+    <style type="text/css">
+        .btn {
+            background-color: #e8edff;
+            border-radius: 10px;
+            padding: 8px 15px;
+        }
+        .btn:active {
+            top: 1px;
+            position: relative;
+        }
+        .h{
+            margin-left: 80px;
+        }
+        .div{
+            margin-left: 100px;
+        }
+
+        #rounded-corner
+        {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 12px;
+            margin: 45px;
+            width: 1000px;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        #rounded-corner th
+        {
+            padding: 8px;
+            font-weight: normal;
+            font-size: 13px;
+            color: #039;
+            background: #b9c9fe;
+        }
+        #rounded-corner td
+        {
+            padding: 8px;
+            background: #e8edff;
+            border-top: 1px solid #fff;
+            color: #669;
+        }
+        #rounded-corner tbody tr:hover td
+        {
+            background: #d0dafd;
+        }
+    </style>
 </head>
 <body>
-查询所有订单：从tb_order 查
+<h2 class="h">查询订单：</h2>
 
-<button onclick="queryOrders()" >查询所有订单</button>
-<button onclick="queryFinishedOrders()" >查询所有已完成订单</button>
-<button onclick="queryUnfinishedOrders()" >查询所有未完成订单</button>
+<div class="div">
+    <button class="btn" onclick="queryOrders()" >查询所有订单</button>
+    <button class="btn" onclick="queryFinishedOrders()" >查询所有已完成订单</button>
+    <button class="btn" onclick="queryUnfinishedOrders()" >查询所有未完成订单</button>
+</div>
+
+<table id="rounded-corner">
+    <thead id="orderList">
+    <tr></tr>
+    </thead>
+</table>
 </body>
 
 <script src="../static/js/jquery-1.8.2.min.js" th:src="@{js/jquery-1.8.2.min.js}"></script>
@@ -42,10 +96,32 @@
             async: true,
             success: function (result) {
 
+                $("#orderList").html("");
                 if (result.status == 0) {//成功
 
                     console.log(result.msg);
                     console.log(result.data);
+
+                    var array = result.data;
+
+                    $('#orderList').append( "<th scope='col'>订单编号</th>\\n\" +\n" +
+                                            "<th scope='col'>操作员</th>"+
+                                            "<th scope='col'>货物编号</th>"+
+                                            "<th scope='col'>货物数量</th>" +
+                                            "<th scope='col'>总金额</th>");
+
+                    for(i = 0 ;i<array.length;i++){
+                        //console.log(array[i].orderID);
+                        //console.log(array[i].operatorAccount);
+                        //console.log(array[i].goodsID);
+                        $('#orderList').append("<tr>" +
+                            "<td>"+array[i].orderID+"</td>" +
+                            "<td>"+array[i].operatorAccount+"</td>" +
+                            "<td>"+array[i].goodsID+"</td>" +
+                            "<td>"+array[i].goodsNum+"</td>" +
+                            "<td>"+array[i].totalValue+"</td>" +
+                            "</tr>");
+                    }
 
                 } else  {
                     console.log(result.msg);
