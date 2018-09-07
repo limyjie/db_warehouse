@@ -32,4 +32,14 @@ public class HttpController {
     public String getQueryPage(){
         return "query";
     }
+
+    @GetMapping(value = "navigation_bar")
+    public String getNavigationPage(){
+        return "navigation_bar";
+    }
+
+    @GetMapping(value = "dispatch")
+    public String getDispatchPage(){
+        return "dispatch";
+    }
 }

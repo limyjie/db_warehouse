@@ -15,6 +15,7 @@ import java.util.List;
  * @DATE 2018/9/3 19:43
  **/
 public interface OrderService {
+    //生成订单（包括入库订单和出库订单）
     ResponseDTO<Order> addOrder(Order order, Employee employee);
 
     ResponseDTO<List<Order>> queryOrders();

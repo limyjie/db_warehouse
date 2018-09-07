@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>出入库管理</title>
+</head>
+<body>
+<input type="text" id="text_order_id" placeholder="输入订单号"/>
+<button onclick="startInput()">执行入库操作</button>
+<button onclick="startOutput()">执行出库操作</button>
+</body>
+
+<script src="../static/js/jquery-1.8.2.min.js" th:src="@{js/jquery-1.8.2.min.js}"></script>
+<script type="text/javascript">
+
+    function startInput() {
+        var requestURL = "order/inputOrder";
+        var data = $("#text_order_id").val();
+
+        doPost(requestURL,data);
+
+    }
+
+    function startOutput() {
+        var requestURL = "order/outputOrder";
+        var orderID = $("#text_order_id").val();
+
+
+       doPost(requestURL,orderID)
+    }
+
+    function doPost(requestURL,data) {
+        $.ajax({
+            type: "POST",
+            url: requestURL,
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: data,
+            async: true,
+            success: function (result) {
+
+                if (result.status == 0) {//成功
+
+                    console.log(result.msg);
+
+                } else  {
+                    console.log(result.msg);
+
+                }
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+    }
+</script>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
@@ -42,34 +42,34 @@ a{text-decoration:none;}
 	<div class="leftsidebar_box">
 		<div class="line"></div>
 		<dl class="system_log">
-			<dt onClick="changeImage()">库存管理<img src="../static/img/left/select_xl01.png"></dt>
+			<dt onClick="changeImage()">库存管理<img src="../static/img/left/select_xl01.png" th:src="@{img/left/select_xl01.png}"></dt>
 			<dd class="first_dd" onclick="menuClick('index.html')"><a href="#">货物登记</a></dd>
 			<dd><a href="#">入库管理</a></dd>
 			<dd><a href="#">出库管理</a></dd>
 		</dl>
 	
 		<dl class="channel">
-			<dt>订单查询<img src="../static/img/left/select_xl01.png"></dt>
+			<dt>订单查询<img src="../static/img/left/select_xl01.png" th:src="@{img/left/select_xl01.png}"></dt>
 			<dd class="first_dd"><a href="#">已完成订单</a></dd>
 			<dd><a href="#">未完成订单</a></dd>
 		</dl>
 	
 		<dl class="syetem_management">
-			<dt>系统管理<img src="../static/img/left/select_xl01.png"></dt>
+			<dt>系统管理<img src="../static/img/left/select_xl01.png" th:src="@{img/left/select_xl01.png}"></dt>
 			<dd class="first_dd"><a href="#">后台用户管理</a></dd>
 			<dd><a href="#">供应商管理</a></dd>
 			<dd><a href="#">修改用户密码</a></dd>
 		</dl>
 	
 		<dl class="source">
-			<dt>货物类型管理<img src="../static/img/left/select_xl01.png"></dt>
+			<dt>货物类型管理<img src="../static/img/left/select_xl01.png" th:src="@{img/left/select_xl01.png}"></dt>
 			<dd class="first_dd"><a href="#">服饰</a></dd>
 			<dd><a href="#">生活用品</a></dd>
 			<dd><a href="#">牛奶饮品</a></dd>
 		</dl>
 	
 		<dl class="statistics">
-			<dt>统计分析<img src="../static/img/left/select_xl01.png"></dt>
+			<dt>统计分析<img src="../static/img/left/select_xl01.png" th:src="@{img/left/select_xl01.png}"></dt>
 			<dd class="first_dd"><a href="#">客户统计</a></dd>
 		</dl>
 	

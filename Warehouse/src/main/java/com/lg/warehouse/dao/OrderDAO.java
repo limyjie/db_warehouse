@@ -19,4 +19,8 @@ public interface OrderDAO {
 
     List<Order> queryFinishedOrders();
 
+    Order queryOrderByOrderID(String orderID);
+
+    int modifyExecutedBySelf(Order self);
+
 }

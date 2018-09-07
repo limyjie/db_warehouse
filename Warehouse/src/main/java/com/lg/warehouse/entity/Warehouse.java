@@ -14,17 +14,17 @@ public class Warehouse {
     private String location;
     private Integer remain;
     private Integer capacity;
-    private String orderID;
 
 
-    public Warehouse(Integer UID, String ID, String name, String location, Integer remain, Integer capacity, String orderID) {
+
+    public Warehouse(Integer UID, String ID, String name, String location, Integer remain, Integer capacity) {
         this.UID = UID;
         this.ID = ID;
         this.name = name;
         this.location = location;
         this.remain = remain;
         this.capacity = capacity;
-        this.orderID = orderID;
+
     }
 
 
@@ -37,7 +37,6 @@ public class Warehouse {
                 ", location='" + location + '\'' +
                 ", remain=" + remain +
                 ", capacity=" + capacity +
-                ", orderID='" + orderID + '\'' +
                 '}';
     }
 
@@ -89,11 +88,5 @@ public class Warehouse {
         this.capacity = capacity;
     }
 
-    public String getOrderID() {
-        return orderID;
-    }
 
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
-    }
 }

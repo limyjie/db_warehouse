@@ -17,7 +17,14 @@
         FROM tb_warehouse
         WHERE id=#{ID}
     </select>
-    
+
+    <update id="modifyRemainBySelf" parameterType="com.lg.warehouse.entity.Warehouse">
+        UPDATE tb_warehouse
+        SET remain=#{remain}
+        WHERE id=#{ID}
+    </update>
+
+
     
 
 </mapper>

@@ -10,6 +10,7 @@
 <button onclick="queryOrders()" >查询所有订单</button>
 <button onclick="queryFinishedOrders()" >查询所有已完成订单</button>
 <button onclick="queryUnfinishedOrders()" >查询所有未完成订单</button>
+<button onclick="queryGoodsByWarehouseID()">查询某一库房内的货物</button>
 </body>
 
 <script src="../static/js/jquery-1.8.2.min.js" th:src="@{js/jquery-1.8.2.min.js}"></script>
@@ -30,6 +31,33 @@
     function queryFinishedOrders() {
         var requestURL = "order/finishedOrders";
         getData(requestURL);
+    }
+    //查询库房内的货物
+    function queryGoodsByWarehouseID() {
+        var requestURL = "order/warehouseGoods";
+        var warehouseID = "w1" ;
+        $.ajax({
+            type: "POST",
+            url: requestURL,
+            contentType: "application/json;charset=utf-8",//发送给服务器的格式
+            dataType: "Json",//返回值类型
+            data: warehouseID,
+            async: true,
+            success: function (result) {
+
+                if (result.status == 0) {//成功
+
+                    console.log(result.msg);
+                    console.log(result.data);
+
+                } else  {
+                    console.log(result.status+'\n'+result.msg);
+                }
+            },
+            error: function () {
+                alert("error");
+            }
+        });
     }
 
     function getData(requestURL) {

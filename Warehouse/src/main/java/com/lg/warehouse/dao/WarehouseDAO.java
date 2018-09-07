@@ -12,12 +12,9 @@ import org.apache.ibatis.annotations.Param;
 public interface WarehouseDAO {
 
     Warehouse queryWarehouseByID(String ID);
-    //将未执行入库的订单执行入库
-    int inputOrderToWarehouse(@Param("order_id")String orderID,@Param("id")String warehouseID);
-    //将未执行出库的订单出库
-    int outputOrderFromWarehouse(@Param("order_id")String orderID,@Param("id")String warehouseID);
 
-
+    //修改仓库剩余容量
+    int modifyRemainBySelf(Warehouse self);
 
 
 }

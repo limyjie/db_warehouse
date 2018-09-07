@@ -29,5 +29,18 @@
     </select>
 
 
+    <select id="queryOrderByOrderID" parameterType="String" resultType="com.lg.warehouse.entity.Order">
+        SELECT *
+        From tb_order
+        WHERE order_id=#{orderID}
+    </select>
+
+    <update id="modifyExecutedBySelf" parameterType="com.lg.warehouse.entity.Order">
+        UPDATE tb_order
+        SET executed=#{executed}
+        WHERE order_id=#{orderID}
+    </update>
+
+
 
 </mapper>
