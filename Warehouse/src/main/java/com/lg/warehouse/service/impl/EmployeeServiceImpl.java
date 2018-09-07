@@ -38,7 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         HttpSession httpSession = httpServletRequest.getSession();
 
-        httpSession.setAttribute("session_name",employee);
+        httpSession.setAttribute("session_employee_name",employee);
         return new ResponseDTO<>(0,"success",null);
 
     }

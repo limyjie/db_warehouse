@@ -11,7 +11,8 @@ import java.sql.Timestamp;
 public class Order {
 
     //必要参数
-    private String operator;
+    private String orderID;
+    private String operatorAccount;
     private String goodsID;
     private String goodsNum;
     //可选参数
@@ -24,10 +25,14 @@ public class Order {
     private Timestamp createTime;
     private Timestamp lastModifyTime;
 
+    public Order() {
+    }
+
     @Override
     public String toString() {
         return "Order{" +
-                "operator='" + operator + '\'' +
+                "orderID='" + orderID + '\'' +
+                "operatorAccount='" + operatorAccount + '\'' +
                 ", goodsID='" + goodsID + '\'' +
                 ", goodsNum='" + goodsNum + '\'' +
                 ", totalValue='" + totalValue + '\'' +
@@ -41,9 +46,77 @@ public class Order {
                 '}';
     }
 
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
+
+    public void setOperatorAccount(String operatorAccount) {
+        this.operatorAccount = operatorAccount;
+    }
+
+    public String getOrderID() {
+
+        return orderID;
+    }
+
+    public String getOperatorAccount() {
+        return operatorAccount;
+    }
+
+    public Order(String orderID ,String goodsID, String goodsNum, String toStorageID, String location) {
+        this.orderID = orderID;
+        this.goodsID = goodsID;
+        this.goodsNum = goodsNum;
+        this.toStorageID = toStorageID;
+        this.location = location;
+    }
+
+    public void setOperator(String operatorAccount) {
+        this.operatorAccount = operatorAccount;
+    }
+
+    public void setGoodsID(String goodsID) {
+        this.goodsID = goodsID;
+    }
+
+    public void setGoodsNum(String goodsNum) {
+        this.goodsNum = goodsNum;
+    }
+
+    public void setTotalValue(String totalValue) {
+        this.totalValue = totalValue;
+    }
+
+    public void setFromStorageID(String fromStorageID) {
+        this.fromStorageID = fromStorageID;
+    }
+
+    public void setToStorageID(String toStorageID) {
+        this.toStorageID = toStorageID;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
+    public void setExecuted(String executed) {
+        this.executed = executed;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public void setLastModifyTime(Timestamp lastModifyTime) {
+        this.lastModifyTime = lastModifyTime;
+    }
 
     public String getOperator() {
-        return operator;
+        return operatorAccount;
     }
 
     public String getGoodsID() {
@@ -88,7 +161,7 @@ public class Order {
 
     private Order(Builder builder){
 
-        this.operator = builder.operator;
+        this.operatorAccount = builder.operatorAccount;
         this.goodsID = builder.goodsID;
         this.goodsNum = builder.goodsNum;
         this.createTime = builder.createTime;
@@ -105,7 +178,7 @@ public class Order {
 
     public static class Builder{
 
-        private String operator;
+        private String operatorAccount;
         private String goodsID;
         private String goodsNum;
         private String totalValue;
@@ -118,7 +191,7 @@ public class Order {
         private Timestamp lastModifyTime;
 
         public Builder(String operatorAccount,String goodsID,String goodsNum){
-            this.operator = operatorAccount;
+            this.operatorAccount = operatorAccount;
             this.goodsID = goodsID;
             this.goodsNum = goodsNum;
         }

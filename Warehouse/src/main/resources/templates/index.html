@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
-    <link rel="stylesheet" href="../static/css/info.css" />
+    <link rel="stylesheet" href="../static/css/info.css" th:href="@{css/info.css}" />
     <style>
         #b{
             width:500px;
@@ -22,30 +22,81 @@
     <form action="" class="elegant-aero">
         <label>
             <span>货物号：</span>
-            <input type="text" required="required" />
+            <input type="text" required="required" id="text_goodsID" value="123"/>
         </label>
         <label>
             <span>货物数量：</span>
-            <input type="number" name="points" min="1" />
+            <input type="number" name="points" min="1" id="text_goodsNum" value="123" />
         </label>
+
         <label>
-            <span>总金额：</span>
-            <input type="text" />
+            <span>入库仓库号：</span>
+            <input type="text" required="required" id="text_warehouseID" value="123">
         </label>
+
         <label>
-            <span>出货仓库号：</span>
-            <input type="text" required="required">
-        </label>
-        <label>
-            <span>到货仓库号：</span>
-            <input type="text" />
+            <span>具体位置：</span>
+            <input type="text" list="url_list" name="text" id="text_location" value="123"/>
+            <datalist id="url_list">>
+                <option value="东区" />
+                <option value="南区" />
+                <option value="西区" />
+                <option value="北区" />
+            </datalist>
         </label>
         <label>
             <span>&nbsp;</span>
             <input type="submit" class="button" value="入库">&nbsp;&nbsp;
             <input type="submit" class="button" value="出库">&nbsp;&nbsp;
+>>>>>>> branch_2
+
+            <input type="button" class="button" value="生成入库订单" onclick="postOrder()">
         </label>
     </form>
 </div>
 </body>
+
+<script src="../static/js/jquery-1.8.2.min.js" th:src="@{js/jquery-1.8.2.min.js}"></script>
+<script type="text/javascript">
+
+    function postOrder() {
+        var requestURL = "order/postOrder";
+        var goodsID = $("#text_goodsID").val();
+        var goodsNum =$("#text_goodsNum").val();
+        var location = $("#text_location").val();
+        var warehouseID = $("#text_warehouseID").val();
+
+
+
+        var data={
+            "goodsID":goodsID,
+            "goodsNum":goodsNum,
+            "location":location,
+            "toStorageID":warehouseID
+        };
+
+        $.ajax({
+            type: "POST",
+            url: requestURL,
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(data),
+            async: true,
+            success: function (result) {
+
+                if (result.status == 0) {//成功
+                    alert(result.msg);
+                    console.log(result.msg);
+
+                } else  {
+                   alert(result.msg);
+
+                }
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+    }
+</script>
 </html>

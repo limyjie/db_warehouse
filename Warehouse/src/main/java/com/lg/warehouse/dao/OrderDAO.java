@@ -2,6 +2,8 @@ package com.lg.warehouse.dao;
 
 import com.lg.warehouse.entity.Order;
 
+import java.util.List;
+
 /**
  * @author lin
  * @ClassName Order
@@ -10,5 +12,11 @@ import com.lg.warehouse.entity.Order;
  **/
 public interface OrderDAO {
     int addOrder(Order order);
+
+    List<Order> queryAllOrders();
+
+    List<Order> queryUnfinishedOrders();
+
+    List<Order> queryFinishedOrders();
 
 }

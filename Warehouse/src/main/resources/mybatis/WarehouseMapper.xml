@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lg.warehouse.dao.WarehouseDAO">
+
+  <select id="queryWarehouseByID" parameterType="String" resultType="com.lg.warehouse.entity.Warehouse">
+      SELECT *
+      FROM tb_warehouse
+      WHERE id = #{ID}
+</select>
+    
+    <insert id="inputOrderToWarehouse" >
+        INSERT INTO tb_warehouse
+    </insert>
+
+    <select id="queryRemainByWarehouseID" parameterType="String" resultType="Integer" >
+        SELECT remain
+        FROM tb_warehouse
+        WHERE id=#{ID}
+    </select>
+    
+    
+
+</mapper>
