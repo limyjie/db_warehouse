@@ -33,9 +33,9 @@ public class HttpController {
         return "query";
     }
 
-    @GetMapping(value = "navigation_bar")
+    @GetMapping(value = "navigation")
     public String getNavigationPage(){
-        return "navigation_bar";
+        return "navigation";
     }
 
     @GetMapping(value = "dispatch")
