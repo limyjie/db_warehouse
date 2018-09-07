@@ -9,18 +9,18 @@ package com.lg.warehouse.entity;
 public class Warehouse {
 
     private Integer UID;
-    private String ID;
-    private String name;
+    private String warehouseID;
+    private String warehouseName;
     private String location;
     private Integer remain;
     private Integer capacity;
 
 
 
-    public Warehouse(Integer UID, String ID, String name, String location, Integer remain, Integer capacity) {
+    public Warehouse(Integer UID, String warehouseID, String warehouseName, String location, Integer remain, Integer capacity) {
         this.UID = UID;
-        this.ID = ID;
-        this.name = name;
+        this.warehouseID = warehouseID;
+        this.warehouseName = warehouseName;
         this.location = location;
         this.remain = remain;
         this.capacity = capacity;
@@ -32,8 +32,8 @@ public class Warehouse {
     public String toString() {
         return "Warehouse{" +
                 "UID=" + UID +
-                ", ID='" + ID + '\'' +
-                ", name='" + name + '\'' +
+                ", ID='" + warehouseID + '\'' +
+                ", name='" + warehouseName + '\'' +
                 ", location='" + location + '\'' +
                 ", remain=" + remain +
                 ", capacity=" + capacity +
@@ -49,19 +49,19 @@ public class Warehouse {
     }
 
     public String getID() {
-        return ID;
+        return warehouseID;
     }
 
     public void setID(String ID) {
-        this.ID = ID;
+        this.warehouseID = ID;
     }
 
     public String getName() {
-        return name;
+        return warehouseName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String warehouseName) {
+        this.warehouseName = warehouseName;
     }
 
     public String getLocation() {

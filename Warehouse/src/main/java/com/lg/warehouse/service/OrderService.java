@@ -23,4 +23,7 @@ public interface OrderService {
     ResponseDTO<List<Order>> queryUnfinishedOrders();
 
     ResponseDTO<List<Order>> queryFinishOrders();
+
+    //根据订单id查订单
+    ResponseDTO<Order> queryOrderByID(String orderID);
 }

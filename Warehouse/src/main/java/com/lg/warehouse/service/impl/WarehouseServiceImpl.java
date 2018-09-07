@@ -94,9 +94,18 @@ public class WarehouseServiceImpl implements WarehouseService {
         wareGoods.setGoodsNum(order.getGoodsNum());
         wareGoods.setWarehouseID(order.getToStorageID());
 
+        //库房中已有该类型货物，则执行update操作
+        wareGoodsDAO.queryGoodsInWarehouse(wareGoods);
 
-        //执行入库
-        wareGoodsDAO.addGoodsToWarehouse(wareGoods);
+
+
+        //库房中未有该类型货物，则执行insert操作
+        if(wareGoods==null){
+            wareGoodsDAO.addGoodsToWarehouse(wareGoods);
+        }else{
+            wareGoodsDAO.modifyGoodsNum(wareGoods);
+        }
+
 
         warehouse.setRemain(remain-num);
         //修改仓库剩余容量
@@ -153,5 +162,18 @@ public class WarehouseServiceImpl implements WarehouseService {
 
 
         return new ResponseDTO<>(0,"出库成功",wareGoods);
+    }
+
+    @Override
+    public ResponseDTO<Warehouse> addWarehouse(Warehouse warehouse) {
+
+        int addCompliete = warehouseDAO.addWarehoue(warehouse);
+
+        if(addCompliete!=1){
+            return new ResponseDTO<>(0,"库房添加失败",null);
+        }
+
+        return new ResponseDTO<>(0,"库房添加成功",warehouse);
+
     }
 }

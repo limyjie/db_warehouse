@@ -8,4 +8,9 @@
       WHERE goods_id = #{goodsID}
 </select>
 
+    <insert id="addGoodsType" parameterType="com.lg.warehouse.entity.Goods">
+        INSERT INTO tb_goods(goods_id,goods_name,price)
+        VALUES (#{goodsID},#{goodsName},#{price})
+    </insert>
+
 </mapper>

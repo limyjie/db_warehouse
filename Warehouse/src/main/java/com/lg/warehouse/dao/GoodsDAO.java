@@ -10,4 +10,6 @@ import com.lg.warehouse.entity.Goods;
  **/
 public interface GoodsDAO {
     Goods queryGoodsByGoodsID(String goodsID);
+
+    int addGoodsType(Goods goods);
 }

@@ -16,5 +16,5 @@ public interface WarehouseDAO {
     //修改仓库剩余容量
     int modifyRemainBySelf(Warehouse self);
 
-
+    int addWarehoue(Warehouse warehouse);
 }

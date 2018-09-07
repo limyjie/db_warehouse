@@ -4,6 +4,7 @@ import com.lg.warehouse.dto.ResponseDTO;
 import com.lg.warehouse.entity.Goods;
 import com.lg.warehouse.entity.Order;
 import com.lg.warehouse.entity.WareGoods;
+import com.lg.warehouse.entity.Warehouse;
 
 import java.util.List;
 
@@ -25,5 +26,8 @@ public interface WarehouseService {
 
     //根据已有的出库订单执行出库操作
     ResponseDTO<WareGoods> outputGoods(String orderID);
+
+    //添加新的库房
+    ResponseDTO<Warehouse> addWarehouse(Warehouse warehouse);
 
 }

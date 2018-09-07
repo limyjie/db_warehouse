@@ -25,4 +25,19 @@
         WHERE warehouse_id =#{warehouseID}
     </select>
 
+    <select id="queryGoodsInWarehouse" parameterType="com.lg.warehouse.entity.WareGoods" resultType="com.lg.warehouse.entity.WareGoods">
+        SELECT *
+        FROM tb_waregoods
+        WHERE warehouse_id =#{warehouseID}
+              AND goods_id =#{goodsID}
+    </select>
+
+
+    <update id="modifyGoodsNum" parameterType="com.lg.warehouse.entity.WareGoods">
+        UPDATE tb_waregoods
+        SET goods_num=#{goodsNum}
+        WHERE goods_id =#{goodsID}
+    </update>
+
+
 </mapper>

@@ -5,26 +5,28 @@
   <select id="queryWarehouseByID" parameterType="String" resultType="com.lg.warehouse.entity.Warehouse">
       SELECT *
       FROM tb_warehouse
-      WHERE id = #{ID}
+      WHERE warehouse_id = #{warehouseID}
 </select>
     
-    <insert id="inputOrderToWarehouse" >
-        INSERT INTO tb_warehouse
-    </insert>
+
 
     <select id="queryRemainByWarehouseID" parameterType="String" resultType="Integer" >
         SELECT remain
         FROM tb_warehouse
-        WHERE id=#{ID}
+        WHERE warehouse_id=#{warehouseID}
     </select>
 
     <update id="modifyRemainBySelf" parameterType="com.lg.warehouse.entity.Warehouse">
         UPDATE tb_warehouse
         SET remain=#{remain}
-        WHERE id=#{ID}
+        WHERE warehouse_id=#{warehouseID}
     </update>
 
 
-    
+    <insert id="addWarehoue" parameterType="com.lg.warehouse.entity.Warehouse">
+        INSERT INTO tb_warehouse
+          (warehouse_id,name,location,remain,capacity)
+        VALUES (#{warehouseID},#{warehouseName},#{location},#{remain},#{capacity})
+    </insert>
 
 </mapper>

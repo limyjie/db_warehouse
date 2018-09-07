@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
+<title>导航</title>
 <head>
 
 <style type="text/css">
@@ -42,15 +42,15 @@ a{text-decoration:none;}
 	<div class="leftsidebar_box">
 		<div class="line"></div>
 		<dl class="system_log">
-			<dt onClick="changeImage()">库存管理<img src="../static/img/left/select_xl01.png" th:src="@{img/left/select_xl01.png}"></dt>
-			<dd class="first_dd" onclick="menuClick('index.html')"><a href="#">货物登记</a></dd>
+			<dt onClick="changeImage()">库存管理<img src="../static/img/left/select_xl01.png" th:src="@{/img/left/select_xl01.png}"></dt>
+			<dd class="first_dd" onclick="menuClick('index')"><a href="#">货物登记</a></dd>
 			<dd><a href="#">入库管理</a></dd>
 			<dd><a href="#">出库管理</a></dd>
 		</dl>
 	
 		<dl class="channel">
 
-			<dt onclick="menuClick('query.html')">订单查询<img src="../static/img/left/select_xl01.png"></dt>
+			<dt onclick="menuClick('query')">订单查询<img src="../static/img/left/select_xl01.png"></dt>
 
 		</dl>
 	
@@ -83,7 +83,7 @@ a{text-decoration:none;}
 
 </div>
 
-<script type="text/javascript" src="../static/js/jquery.js"></script>
+<script type="text/javascript" src="../static/js/jquery.js" th:src="@{js/jquery.js}"></script>
 <script type="text/javascript">
 $(".leftsidebar_box dt").css({"background-color":"#3992d0"});
 $(".leftsidebar_box dt img").attr("src","../static/img/left/select_xl01.png");

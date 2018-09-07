@@ -76,6 +76,7 @@ public class OrderServiceImpl implements OrderService {
         }
 
 
+
         long num = Long.valueOf(order.getGoodsNum());
         double value = Double.valueOf(getGoods.getPrice());
         double total = num*value;
@@ -138,7 +139,17 @@ public class OrderServiceImpl implements OrderService {
         return new ResponseDTO<>(0,"finished orders success",orders);
     }
 
+    @Override
+    public ResponseDTO<Order> queryOrderByID(String orderID) {
 
+        Order order = orderDAO.queryOrderByOrderID(orderID);
+
+        if(order==null){
+            return new ResponseDTO<>(308,"找不到该订单",null);
+        }
+
+        return new ResponseDTO<>(0,"订单查询成功",order);
+    }
 
 
 }

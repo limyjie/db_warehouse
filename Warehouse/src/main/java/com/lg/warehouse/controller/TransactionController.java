@@ -6,6 +6,7 @@ import com.lg.warehouse.entity.Employee;
 import com.lg.warehouse.entity.Goods;
 import com.lg.warehouse.entity.Order;
 import com.lg.warehouse.entity.WareGoods;
+import com.lg.warehouse.service.GoodsService;
 import com.lg.warehouse.service.OrderService;
 import com.lg.warehouse.service.WarehouseService;
 import org.aspectj.weaver.ast.Or;
@@ -34,6 +35,9 @@ public class TransactionController {
 
     @Autowired
     private WarehouseService warehouseService;
+
+    @Autowired
+    private GoodsService goodsService;
 
     //提交新的订单（出库/入库）
     @PostMapping(value = "/postOrder")
@@ -104,6 +108,15 @@ public class TransactionController {
         System.out.println("controller orderID id:"+orderID);
         return warehouseService.outputGoods(orderID);
 
+    }
+
+    //添加货物种类
+    @PostMapping(value = "addGoods")
+    public ResponseDTO<Goods> addGoodsType(@RequestBody String params){
+
+        Goods goods = JSON.parseObject(params,Goods.class);
+        System.out.println("controller goods:" + goods);
+        return goodsService.addGoodsType(goods);
     }
 
 }
