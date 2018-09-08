@@ -30,4 +30,8 @@ public interface WarehouseService {
     //添加新的库房
     ResponseDTO<Warehouse> addWarehouse(Warehouse warehouse);
 
+    //查询所有库房
+    ResponseDTO<List<Warehouse>> queryWarehouse();
+
+
 }

@@ -19,7 +19,7 @@
 </head>
 <body>
 <div id="b">
-    <form action="" class="elegant-aero">
+    <form  class="elegant-aero">
         <label>
             <span>货物号：</span>
             <input type="text" required="required" id="text_goodsID" value="123"/>
@@ -30,26 +30,18 @@
         </label>
 
         <label>
-            <span>入库仓库号：</span>
+            <span>执行操作：</span>
+            <label for="text_input"><input id="text_input" type="radio"  name="chose" checked="checked">入库</label>
+            <label for="text_output"><input id="text_output" type="radio"  name="chose">出库</label>
+        </label>
+
+        <label>
+            <span>目标仓库号：</span>
             <input type="text" required="required" id="text_warehouseID" value="123">
         </label>
 
         <label>
-            <span>具体位置：</span>
-            <input type="text" list="url_list" name="text" id="text_location" value="123"/>
-            <datalist id="url_list">>
-                <option value="东区" />
-                <option value="南区" />
-                <option value="西区" />
-                <option value="北区" />
-            </datalist>
-        </label>
-        <label>
-            <span>&nbsp;</span>
-            <input type="submit" class="button" value="入库" onclick="postOrder()">&nbsp;&nbsp;
-            <input type="submit" class="button" value="出库" >&nbsp;&nbsp;
-
-            <input type="button" class="button" value="生成入库订单" onclick="postOrder()">
+            <input type="button" class="button" value="生成订单" onclick="postOrder()">
         </label>
     </form>
 </div>
@@ -62,15 +54,21 @@
         var requestURL = "order/postOrder";
         var goodsID = $("#text_goodsID").val();
         var goodsNum =$("#text_goodsNum").val();
-        var location = $("#text_location").val();
         var warehouseID = $("#text_warehouseID").val();
 
+        var direction="none";
 
+        if($("#text_input").attr("checked")){
+            direction="In";
+        }else{
+            direction="Out";
+        }
 
+        console.log(direction);
         var data={
             "goodsID":goodsID,
             "goodsNum":goodsNum,
-            "location":location,
+            "direction":direction,
             "toStorageID":warehouseID
         };
 

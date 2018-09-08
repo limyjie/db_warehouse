@@ -1,21 +1,20 @@
 package com.lg.warehouse.controller;
 
+
+
+
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.lg.warehouse.dto.ResponseDTO;
-import com.lg.warehouse.entity.Employee;
-import com.lg.warehouse.entity.Goods;
-import com.lg.warehouse.entity.Order;
-import com.lg.warehouse.entity.WareGoods;
+import com.lg.warehouse.entity.*;
 import com.lg.warehouse.service.GoodsService;
 import com.lg.warehouse.service.OrderService;
 import com.lg.warehouse.service.WarehouseService;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -82,6 +81,15 @@ public class TransactionController {
     }
 
 
+
+    //根据订单ID查询订单
+    @PostMapping(value = "queryOrderByID")
+    public ResponseDTO<Order> getOrderByID(@RequestBody String params){
+        String orderID = params;
+        System.out.println("orderID:"+orderID);
+        return orderService.queryOrderByID(orderID);
+    }
+
     //查询某一库房内的所有货物
     @PostMapping(value = "warehouseGoods")
     public ResponseDTO<List<WareGoods>> getWarehouseGoods(@RequestBody String params){
@@ -114,9 +122,39 @@ public class TransactionController {
     @PostMapping(value = "addGoods")
     public ResponseDTO<Goods> addGoodsType(@RequestBody String params){
 
+        System.out.println(params);
         Goods goods = JSON.parseObject(params,Goods.class);
         System.out.println("controller goods:" + goods);
         return goodsService.addGoodsType(goods);
+    }
+
+
+    //查询所有仓库
+    @GetMapping(value = "queryWare")
+    public ResponseDTO<List<Warehouse>> queryWarehouse(){
+
+
+        return warehouseService.queryWarehouse();
+    }
+
+
+    //添加新的仓库
+    @PostMapping(value = "addWarehouse")
+    public ResponseDTO<Warehouse> addWarehouse(@RequestBody String params){
+
+
+
+       Warehouse warehouse = JSON.parseObject(params,Warehouse.class);
+       warehouse.setRemain(warehouse.getCapacity());
+
+        System.out.println(warehouse.toString());
+
+        return warehouseService.addWarehouse(warehouse);
+    }
+
+    @GetMapping(value = "getAllGoods")
+    public ResponseDTO<List<Goods>> getAllGoods(){
+        return goodsService.getAllGoods();
     }
 
 }

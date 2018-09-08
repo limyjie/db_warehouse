@@ -17,16 +17,21 @@
         var requestURL = "order/inputOrder";
         var data = $("#text_order_id").val();
 
-        doPost(requestURL,data);
-
+        if (data == "" || data == null) {
+            alert("订单号不能为空");
+            return;
+        }
+        doPost(requestURL, data);
     }
-
     function startOutput() {
         var requestURL = "order/outputOrder";
         var orderID = $("#text_order_id").val();
+        if(orderID==""){
+            alert("订单号不能为空");
+            return
+        }
 
-
-       doPost(requestURL,orderID)
+       doPost(requestURL,orderID);
     }
 
     function doPost(requestURL,data) {
@@ -41,10 +46,10 @@
 
                 if (result.status == 0) {//成功
 
-                    console.log(result.msg);
+                    alert(result.msg);
 
                 } else  {
-                    console.log(result.msg);
+                    alert(result.msg);
 
                 }
             },

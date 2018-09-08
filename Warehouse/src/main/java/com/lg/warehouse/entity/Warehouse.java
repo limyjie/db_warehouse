@@ -15,29 +15,19 @@ public class Warehouse {
     private Integer remain;
     private Integer capacity;
 
-
-
-    public Warehouse(Integer UID, String warehouseID, String warehouseName, String location, Integer remain, Integer capacity) {
-        this.UID = UID;
-        this.warehouseID = warehouseID;
-        this.warehouseName = warehouseName;
-        this.location = location;
-        this.remain = remain;
-        this.capacity = capacity;
-
-    }
-
-
     @Override
     public String toString() {
         return "Warehouse{" +
                 "UID=" + UID +
-                ", ID='" + warehouseID + '\'' +
-                ", name='" + warehouseName + '\'' +
+                ", warehouseID='" + warehouseID + '\'' +
+                ", warehouseName='" + warehouseName + '\'' +
                 ", location='" + location + '\'' +
                 ", remain=" + remain +
                 ", capacity=" + capacity +
                 '}';
+    }
+
+    public Warehouse() {
     }
 
     public Integer getUID() {
@@ -48,19 +38,19 @@ public class Warehouse {
         this.UID = UID;
     }
 
-    public String getID() {
+    public String getWarehouseID() {
         return warehouseID;
     }
 
-    public void setID(String ID) {
-        this.warehouseID = ID;
+    public void setWarehouseID(String warehouseID) {
+        this.warehouseID = warehouseID;
     }
 
-    public String getName() {
+    public String getWarehouseName() {
         return warehouseName;
     }
 
-    public void setName(String warehouseName) {
+    public void setWarehouseName(String warehouseName) {
         this.warehouseName = warehouseName;
     }
 
@@ -87,6 +77,4 @@ public class Warehouse {
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
-
-
 }

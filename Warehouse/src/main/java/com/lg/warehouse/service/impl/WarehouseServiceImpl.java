@@ -62,7 +62,6 @@ public class WarehouseServiceImpl implements WarehouseService {
         System.out.println(orderID);
         Order order = orderDAO.queryOrderByOrderID(orderID);
         if(order==null){
-            System.out.println("真的找不到");
             return new ResponseDTO<>(505,"订单不存在",null);
         }
 
@@ -166,14 +165,31 @@ public class WarehouseServiceImpl implements WarehouseService {
 
     @Override
     public ResponseDTO<Warehouse> addWarehouse(Warehouse warehouse) {
+        System.out.println("new warehouse:"+warehouse.toString());
+
+
+        //添加库房时库房号不允许重复
+        if(warehouseDAO.queryWarehouseByID(warehouse.getWarehouseID())!=null){
+            return new ResponseDTO<>(0,"该库房号已存在",null);
+        }
 
         int addCompliete = warehouseDAO.addWarehoue(warehouse);
-
         if(addCompliete!=1){
             return new ResponseDTO<>(0,"库房添加失败",null);
         }
 
         return new ResponseDTO<>(0,"库房添加成功",warehouse);
 
+    }
+
+    @Override
+    public ResponseDTO<List<Warehouse>> queryWarehouse() {
+
+        List<Warehouse> warehouseList = warehouseDAO.queryAllWarehouse();
+
+        for(Warehouse w:warehouseList){
+            System.out.println(w.toString());
+        }
+        return new ResponseDTO<>(0,"查询库房成功",warehouseList);
     }
 }

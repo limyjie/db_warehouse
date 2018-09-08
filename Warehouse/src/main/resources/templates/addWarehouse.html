@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加仓库</title>
+    <style>
+        #b{
+            width:500px;
+            border: 1px solid white;
+            margin-left: 400px;
+            margin-top: 100px;
+            text-align: right;
+        }
+        body{
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+<div id="b">
+    <form  class="elegant-aero">
+        <label>
+            <span>仓库编号：</span>
+            <input type="text" required="required" id="text_warehouseID" value="A123"/>
+        </label>
+        <label>
+            <span>仓库名：</span>
+            <input type="text"  required="required" id="text_warehouseName" value="A1B23" />
+        </label>
+
+        <label>
+            <span>仓库位置：</span>
+            <input type="text" required="required" id="text_location" value="nanjing" />
+
+        </label>
+
+        <label>
+            <span>最大容量：</span>
+            <input type="number" required="required" id="text_capacity" value="8123">
+        </label>
+
+        <label>
+            <input type="button" class="button" value="添加仓库" onclick="postWarehouse()">
+        </label>
+    </form>
+</div>
+</body>
+<script src="../static/js/jquery-1.8.2.min.js" th:src="@{js/jquery-1.8.2.min.js}"></script>
+<script type="text/javascript">
+
+    function postWarehouse() {
+        var requestURL = "order/addWarehouse";
+        var warehouseID = $("#text_warehouseID").val();
+        var warehouseName =$("#text_warehouseName").val();
+        var location = $("#text_location").val();
+        var capacity = $("#text_capacity").val();
+
+
+        var data={
+            "warehouseID":warehouseID,
+            "warehouseName":warehouseName,
+            "location":location,
+            "capacity":capacity
+        };
+
+        $.ajax({
+            type: "POST",
+            url: requestURL,
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(data),
+            async: true,
+            success: function (result) {
+
+                if (result.status == 0) {//成功
+                    alert(result.msg);
+                    console.log(result.msg);
+
+                } else  {
+                    alert(result.msg);
+
+                }
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+    }
+</script>
+
+</html>

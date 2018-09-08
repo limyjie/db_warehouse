@@ -3,6 +3,8 @@ package com.lg.warehouse.dao;
 import com.lg.warehouse.entity.Warehouse;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @author lin
  * @ClassName WarehouseDAO
@@ -17,4 +19,6 @@ public interface WarehouseDAO {
     int modifyRemainBySelf(Warehouse self);
 
     int addWarehoue(Warehouse warehouse);
+
+    List<Warehouse> queryAllWarehouse();
 }

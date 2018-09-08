@@ -13,4 +13,9 @@
         VALUES (#{goodsID},#{goodsName},#{price})
     </insert>
 
+    <select id="queryAllGoods" resultType="com.lg.warehouse.entity.Goods">
+        SELECT *
+        FROM tb_goods
+    </select>
+
 </mapper>

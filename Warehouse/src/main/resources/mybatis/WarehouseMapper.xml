@@ -25,8 +25,14 @@
 
     <insert id="addWarehoue" parameterType="com.lg.warehouse.entity.Warehouse">
         INSERT INTO tb_warehouse
-          (warehouse_id,name,location,remain,capacity)
+          (warehouse_id,warehouse_name,location,remain,capacity)
         VALUES (#{warehouseID},#{warehouseName},#{location},#{remain},#{capacity})
     </insert>
+
+
+    <select id="queryAllWarehouse" resultType="com.lg.warehouse.entity.Warehouse">
+        SELECT *
+        FROM tb_warehouse
+    </select>
 
 </mapper>

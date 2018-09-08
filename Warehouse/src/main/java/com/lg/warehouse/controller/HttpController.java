@@ -48,4 +48,32 @@ public class HttpController {
     public String getDispatchPage(){
         return "dispatch";
     }
+
+
+
+    @GetMapping(value = "queryWarehouse")
+    public String getQueryWarePage(){
+        return "queryWarehouse";
+    }
+
+
+    @GetMapping(value = "addWarehouse")
+    public String getAddyWarePage(){
+        return "addWarehouse";
+    }
+
+    @GetMapping(value = "queryAllGoods")
+    public String getQueryGoodsPage(){
+        return "queryAllGoods";
+    }
+
+    @GetMapping(value = "addGoods")
+    public String getAddGoodsPage(){
+        return "addGoods";
+    }
+
+    @GetMapping(value = "OrderByID")
+    public String getOrderByIDPage(){return "OrderByID";}
+
+
 }

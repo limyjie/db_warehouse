@@ -13,53 +13,39 @@ public class Goods {
 
     private String price;//单价
 
-    @Override
-    public String toString() {
-        return "Goods{" +
-                "UID='" + UID + '\'' +
-                "goodsID='" + goodsID + '\'' +
-                ", goodsName='" + goodsName + '\'' +
-
-                ", price='" + price + '\'' +
-                '}';
-    }
-
-    public Goods(String goodsID,String goodsName,String price){
-        this.goodsID = goodsID;
-        this.goodsName = goodsName;
-        this.price =price;
-    }
-
-    public void setGoodsID(String goodsID) {
-        this.goodsID = goodsID;
-    }
-
-    public void setGooodsName(String gooodsName) {
-        this.goodsName = gooodsName;
+    public Goods() {
     }
 
 
-    public void setPrice(String price) {
-        this.price = price;
+    public Integer getUID() {
+        return UID;
+    }
+
+    public void setUID(Integer UID) {
+        this.UID = UID;
     }
 
     public String getGoodsID() {
         return goodsID;
     }
 
-    public String getGooodsName() {
+    public void setGoodsID(String goodsID) {
+        this.goodsID = goodsID;
+    }
+
+    public String getGoodsName() {
         return goodsName;
     }
 
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
 
     public String getPrice() {
         return price;
     }
 
-    public Goods(Integer UID,String goodsID, String goodsName,String price) {
-        this.UID = UID;
-        this.goodsID = goodsID;
-        this.goodsName = goodsName;
+    public void setPrice(String price) {
         this.price = price;
     }
 }

@@ -7,6 +7,8 @@ import com.lg.warehouse.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author lin
  * @ClassName GoodsServiceImpl
@@ -24,7 +26,7 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public ResponseDTO<Goods> addGoodsType(Goods goods) {
 
-
+        System.out.println("impl"+goods.toString());
         int flag = goodsDAO.addGoodsType(goods);
 
         if(flag!=1){
@@ -32,5 +34,13 @@ public class GoodsServiceImpl implements GoodsService {
         }
         return new ResponseDTO<>(707,"货物类型添加成功",null);
 
+    }
+
+    @Override
+    public ResponseDTO<List<Goods>> getAllGoods() {
+
+        List<Goods> goodsList = goodsDAO.queryAllGoods();
+
+        return new ResponseDTO<>(0,"查询所有货物种类成功",goodsList);
     }
 }
