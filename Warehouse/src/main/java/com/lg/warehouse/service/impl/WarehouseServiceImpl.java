@@ -46,13 +46,10 @@ public class WarehouseServiceImpl implements WarehouseService {
         List<WareGoods> wareGoodsList = wareGoodsDAO.queryGoodsByWarehouseID(warehouseID);
 
         //不存在该库房
-        if (wareGoodsList == null) {
+        if (wareGoodsList == null ||wareGoodsList.isEmpty()) {
             return new ResponseDTO<>(10, "不存在该库房", null);
         }
 
-        for (WareGoods o : wareGoodsList) {
-            System.out.println(o.toString());
-        }
         System.out.println("-----------");
         return new ResponseDTO<>(0, "查询该仓库货物成功", wareGoodsList);
     }

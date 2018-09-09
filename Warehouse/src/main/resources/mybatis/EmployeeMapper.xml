@@ -8,4 +8,16 @@
       WHERE account=#{account}
   </select>
 
+    <insert id="addEmployeeByEntity" parameterType="com.lg.warehouse.entity.Employee">
+        INSERT INTO tb_employee
+        (account,password,authorities)
+        VALUES (#{account},#{password},#{authority})
+    </insert>
+
+    <select id="queryIdentityNum" parameterType="String" resultType="String">
+        SELECT iden_num
+        FROM tb_iden_num
+        WHERE iden_num=#{idenNum}
+    </select>
+
 </mapper>

@@ -86,8 +86,8 @@ public class OrderServiceImpl implements OrderService {
 
         int result = orderDAO.addOrder(order);
 
-        System.out.println(result);
 
+        System.out.println("service impl add order finished");
 
         return new ResponseDTO<>(0, "success", null);
     }

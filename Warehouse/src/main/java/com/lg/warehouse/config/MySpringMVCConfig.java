@@ -1,13 +1,13 @@
+
 package com.lg.warehouse.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-/*
- * lin
- * 2018/7/27 10:53
- */
+
+
+
 
 
 
@@ -35,7 +35,9 @@ public class MySpringMVCConfig  implements WebMvcConfigurer {
                 .addPathPatterns("/OrderByID")
                 .addPathPatterns("/queryAllGoods")
                 .addPathPatterns("/queryWarehouse")
+                .addPathPatterns("/navigation#")
                 .addPathPatterns("/unfinishedOrder");
 
     }
 }
+

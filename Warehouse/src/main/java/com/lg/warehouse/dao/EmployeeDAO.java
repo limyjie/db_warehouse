@@ -13,4 +13,9 @@ import com.lg.warehouse.entity.Employee;
 
 public interface EmployeeDAO {
     Employee queryEmployeeByAccount(String account);
+
+    int addEmployeeByEntity(Employee employee);
+
+
+    String queryIdentityNum(String idenNum);
 }

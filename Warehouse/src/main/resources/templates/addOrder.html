@@ -3,47 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>添加订单</title>
-    <link rel="stylesheet" href="../static/css/info.css" th:href="@{css/info.css}" />
-    <style>
-        #b{
-            width:500px;
-            border: 1px solid white;
-            margin-left: 400px;
-            margin-top: 100px;
-            text-align: right;
-        }
-        body{
-            background-color: aliceblue;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 </head>
 <body>
 
-<div>
-    <label>
-        <span>货物号：</span>
-        <input type="text" required="required" id="text_goodsID" value="123"/>
-    </label>
-    <label>
-        <span>货物数量：</span>
-        <input type="number" name="points" min="1" id="text_goodsNum" value="123" />
-    </label>
+<div style="padding: 100px 100px 10px; width: 50%">
+    <form class="bs-example bs-example-form" role="form">
+        <div class="input-group">
+            <span class="input-group-addon">货物编号</span>
+            <input type="text" id="text_goodsID" class="form-control" placeholder="货物编号" value="g1">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">货物数量</span>
+            <input type="number" id="text_goodsNum" class="form-control" min="1" placeholder="货物数量" value="100">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">执行操作</span>
+            <div >
+                <label for="text_input" style="margin-left: 15%"><input id="text_input" type="radio"  name="chose" checked="checked">入库</label>
+                <label for="text_output" style="margin-left: 15%"><input id="text_output" type="radio"  name="chose">出库</label>
 
-    <label>
-        <span>执行操作：</span>
-        <label for="text_input"><input id="text_input" type="radio"  name="chose" checked="checked">入库</label>
-        <label for="text_output"><input id="text_output" type="radio"  name="chose">出库</label>
-    </label>
+            </div>
 
-    <label>
-        <span>目标仓库号：</span>
-        <input type="text" required="required" id="text_warehouseID" value="C123">
-    </label>
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">目标仓库</span>
+            <input type="text" id="text_warehouseID" class="form-control" placeholder="仓库编号" value="w1">
+        </div>
+        <br>
 
-    <label>
-        <button class=".btn-default" onclick="postOrder()">生成订单</button>
-    </label>
+        <div class="form-group col-md-offset-9">
+            <button class="btn btn-primary pull-right" onclick="postOrder()">生成订单</button>
+        </div>
+
+    </form>
 </div>
+
+
 </body>
 
 
@@ -66,34 +69,34 @@
             direction="Out";
         }
 
-        console.log(direction);
+
         var data={
             "goodsID":goodsID,
             "goodsNum":goodsNum,
             "direction":direction,
             "warehouseID":warehouseID
         };
-
+        console.log(data);
         $.ajax({
             type: "POST",
             url: requestURL,
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             data: JSON.stringify(data),
-            async: true,
+            async: false,
             success: function (result) {
 
                 if (result.status == 0) {//成功
                     alert(result.msg);
                     console.log(result.msg);
-
                 } else  {
+                    console.log(result.msg);
                     alert(result.msg);
-
                 }
             },
             error: function () {
-                alert("error");
+
+                console.log("error");
             }
         });
     }

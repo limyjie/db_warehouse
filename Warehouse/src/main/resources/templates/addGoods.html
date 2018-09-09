@@ -2,42 +2,43 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>添加货物</title><style>
-    #b{
-        width:500px;
-        border: 1px solid white;
-        margin-left: 400px;
-        margin-top: 100px;
-        text-align: right;
-    }
-    body{
-        background-color: aliceblue;
-    }
+    <title>添加货物</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+
+
 </style>
 </head>
 <body>
-<div id="b">
-    <form  class="elegant-aero">
-        <label>
-            <span>货物编号：</span>
-            <input type="text" required="required" id="text_goodsID" value="A123"/>
-        </label>
-        <label>
-            <span>货物名：</span>
-            <input type="text"  required="required" id="text_goodsName" value="A1B23" />
-        </label>
 
-        <label>
-            <span>货物单价：</span>
-            <input type="number" required="required" id="text_price" value="123" />
 
-        </label>
+<div style="padding: 100px 100px 10px; width: 50%">
+    <div class="bs-example bs-example-form" role="form">
+        <div class="input-group">
+            <span class="input-group-addon">货物编号</span>
+            <input type="text" id="text_goodsID" class="form-control" placeholder="货物编号" >
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">货物名称</span>
+            <input type="text" id="text_goodsName" class="form-control" placeholder="货物名称" >
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">货物单价</span>
+            <input type="text" id="text_price" class="form-control" placeholder="货物单价" >
+        </div>
+        <br>
 
-        <label>
-            <input type="button" class="button" value="添加货物" onclick="postGoods()">
-        </label>
-    </form>
+        <div class="form-group col-md-offset-9">
+            <button class="btn btn-primary pull-right " onclick="postGoods()">添加货物</button>
+        </div>
+
+    </div>
 </div>
+
 </body>
 <script src="../static/js/jquery-1.8.2.min.js" th:src="@{js/jquery-1.8.2.min.js}"></script>
 <script type="text/javascript">

@@ -42,4 +42,18 @@ public class EmployeeServiceImpl implements EmployeeService {
         return new ResponseDTO<>(0,"success",null);
 
     }
+
+    @Override
+    public ResponseDTO<Employee> register(Employee employee, String idenNum, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+
+        String hasIdenNum = employeeDao.queryIdentityNum(idenNum);
+
+        if(hasIdenNum==null){
+            return new ResponseDTO<>(0,"验证码错误",null);
+        }
+
+        employeeDao.addEmployeeByEntity(employee);
+
+        return null;
+    }
 }

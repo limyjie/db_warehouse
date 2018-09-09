@@ -18,4 +18,6 @@ public interface EmployeeService {
 
     ResponseDTO<Employee> login(Employee employee, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse);
 
+    ResponseDTO<Employee> register (Employee employee,String idenNum, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse);
+
 }

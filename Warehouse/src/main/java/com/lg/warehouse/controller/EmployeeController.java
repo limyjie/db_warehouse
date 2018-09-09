@@ -36,4 +36,21 @@ public class EmployeeController {
         System.out.println("going to return"+employee.toString());
         return employeeService.login(employee, httpServletRequest, httpServletResponse);
     }
+
+
+    @PostMapping(value = "register")
+    public ResponseDTO<Employee> register(@RequestBody String params, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+
+        //分离employee 和 idenNum
+        Employee employee = JSON.parseObject(params,Employee.class);
+
+        System.out.println(employee.toString());
+
+        System.out.println(params);
+        int pos = params.indexOf("idenNum");
+        System.out.println(pos);
+        String idenNum = params.substring(pos+10,pos+10+4);
+        System.out.println(idenNum);
+        return employeeService.register(employee,idenNum,httpServletRequest,httpServletResponse);
+    }
 }
