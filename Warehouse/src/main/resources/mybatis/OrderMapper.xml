@@ -5,8 +5,8 @@
   <insert id="addOrder" parameterType="com.lg.warehouse.entity.Order" >
       INSERT INTO tb_order
 
-    (operator_account,goods_id,goods_num,total_value,from_storage_id,to_storage_id,location,direction,executed,create_time,last_modify_time)
-    VALUES (#{operator},#{goodsID},#{goodsNum},#{totalValue},#{fromStorageID},#{toStorageID},#{location},#{direction},#{executed},#{createTime},#{lastModifyTime})
+    (operator_account,goods_id,goods_num,total_value,warehouse_id,direction,executed,create_time,last_modify_time)
+    VALUES (#{operatorAccount},#{goodsID},#{goodsNum},#{totalValue},#{warehouseID},#{direction},#{executed},#{createTime},#{lastModifyTime})
 
 </insert>
     
@@ -37,10 +37,21 @@
 
     <update id="modifyExecutedBySelf" parameterType="com.lg.warehouse.entity.Order">
         UPDATE tb_order
-        SET executed=#{executed}
+        SET executed=#{executed},last_modify_time=#{lastModifyTime}
         WHERE order_id=#{orderID}
     </update>
 
+    <delete id="deleteOrderByID" parameterType="String">
+        DELETE
+        FROM tb_order
+        WHERE order_id=#{orderID}
+    </delete>
+
+    <delete id="deleteFinishedOrder">
+        DELETE
+        FROM tb_order
+        WHERE executed="T"
+    </delete>
 
 
 </mapper>

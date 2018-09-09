@@ -18,7 +18,7 @@ public interface WareGoodsDAO {
     List<WareGoods> queryGoodsByWarehouseID(String ID);
 
     //将货物执行入库
-    int addGoodsToWarehouse(WareGoods wareGoods);
+    int addGoods(WareGoods wareGoods);
 
     //修改货物数量
     int modifyGoodsNum(WareGoods wareGoods);
@@ -27,9 +27,8 @@ public interface WareGoodsDAO {
     int decreaseGoodsNum(WareGoods wareGoods);
 
     //查询某仓库内的某货物数量
-    WareGoods queryWareGoodsFromWarehouse(String warehouseID,String goodsID);
+    WareGoods queryGoodsNum(@Param("warehouseID") String warehouseID,@Param("goodsID") String goodsID);
 
-    //查询某仓库内的某货物数量
-    WareGoods queryGoodsInWarehouse(WareGoods wareGoods);
-
+    //出库时，若仓库中该货物的剩余数量等于出库数量，出库后删除此字段
+    int deleteWareGoodsByID(String  goodsID);
 }

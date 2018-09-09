@@ -23,4 +23,8 @@ public interface OrderDAO {
 
     int modifyExecutedBySelf(Order self);
 
+    int deleteOrderByID(String orderID);
+
+    int deleteFinishedOrder();
+
 }

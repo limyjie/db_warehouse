@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lg.warehouse.dao.WareGoodsDAO">
-    <!--查询该库房内的所有execute = T direction = In的货物-->
-  <select id="queryOrderByWarehouseID" parameterType="String" resultType="com.lg.warehouse.entity.Order">
-      SELECT o.*
-      FROM tb_wareorder w,tb_order o
-      WHERE w.warehouse_id=#{warehouseID}
-            AND w.warehouse_id = o.to_storage_id
-            AND o.executed="T"
-            AND o.direction="In"
-  </select>
 
-    <insert id="addGoodsToWarehouse" parameterType="com.lg.warehouse.entity.WareGoods">
+    <insert id="addGoods" parameterType="com.lg.warehouse.entity.WareGoods">
 
-      INSERT INTO tb_wareorder
+      INSERT INTO tb_waregoods
       (warehouse_id,goods_id,goods_num)
       VALUES (#{warehouseID},#{goodsID},#{goodsNum})
     </insert>
@@ -25,7 +16,7 @@
         WHERE warehouse_id =#{warehouseID}
     </select>
 
-    <select id="queryGoodsInWarehouse" parameterType="com.lg.warehouse.entity.WareGoods" resultType="com.lg.warehouse.entity.WareGoods">
+    <select id="queryGoodsNum"  resultType="com.lg.warehouse.entity.WareGoods">
         SELECT *
         FROM tb_waregoods
         WHERE warehouse_id =#{warehouseID}
@@ -38,6 +29,13 @@
         SET goods_num=#{goodsNum}
         WHERE goods_id =#{goodsID}
     </update>
+
+
+    <delete id="deleteWareGoodsByID" parameterType="String">
+        DELETE
+        FROM tb_waregoods
+        WHERE goods_id=#{goodsID}
+    </delete>
 
 
 </mapper>

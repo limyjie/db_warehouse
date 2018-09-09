@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>订单查询</title>
+    <title>删除订单</title>
     <style type="text/css">
         .btn {
             background-color: #e8edff;
@@ -51,10 +51,11 @@
     </style>
 </head>
 <body>
-<h2 class="h">查询订单：</h2>
+<h2 class="h">删除订单：</h2>
 <input type="text" value="1009" id="text_order_id">
 <div class="div">
-    <button class="btn" onclick="queryOrderByID()" >根据ID查询订单</button>
+    <button class="btn" onclick="deleteOrderByID()" >根据ID删除订单</button>
+    <button class="btn" onclick="deleteFinishedOrder()" >删除所有已完成订单</button>
 </div>
 
 <table id="rounded-corner">
@@ -69,8 +70,8 @@
 
 <script type="text/javascript">
 
-    function queryOrderByID() {
-        var requestURL = "order/queryOrderByID";
+    function deleteOrderByID() {
+        var requestURL = "order/deleteOrderByID";
         var orderID =$("#text_order_id").val();
 
         $.ajax({
@@ -84,38 +85,35 @@
 
                 $("#orderList").html("");
                 if (result.status == 0) {//成功
-
-                    console.log(result.msg);
-                    console.log(result.data);
-
-
-
-                    $('#orderList').append(
-                        "<th scope='col'>订单编号</th>" +
-                        "<th scope='col'>货物编号</th>"+
-                        "<th scope='col'>操作员账号</th>"+
-                        "<th scope='col'>调度方向</th>" +
-                        "<th scope='col'>目标仓库</th>" +
-                        "<th scope='col'>是否执行</th>" +
-                        "<th scope='col'>创建时间</th>" +
-                        "<th scope='col'>最后修改时间</th>" +
-                        "<th scope='col'>总金额</th>" );
-
-                        $('#orderList').append("<tr>" +
-                            "<td>"+result.data.orderID+"</td>" +
-                            "<td>"+result.data.goodsID+"</td>" +
-                            "<td>"+result.data.operatorAccount+"</td>" +
-                            "<td>"+result.data.direction+"</td>" +
-                            "<td>"+result.data.warehouseID+"</td>" +
-                            "<td>"+result.data.executed+"</td>" +
-                            "<td>"+result.data.lastModifyTime+"</td>" +
-                            "<td>"+result.data.createTime+"</td>" +
-                            "<td>"+result.data.totalValue+"</td>" +
-                            "</tr>");
+                    alert(result.msg);
                 } else  {
                     alert(result.msg);
-                    console.log(result.msg);
+                }
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+    }
 
+
+    function deleteFinishedOrder() {
+        var requestURL = "order/deleteFinishedOrder";
+
+        $.ajax({
+            type: "GET",
+            url: requestURL,
+            contentType: "text/plain;charset=utf-8",
+            dataType: "json",
+            data: "",
+            async: true,
+            success: function (result) {
+
+                $("#orderList").html("");
+                if (result.status == 0) {//成功
+                    alert(result.msg);
+                } else  {
+                    alert(result.msg);
                 }
             },
             error: function () {

@@ -2,9 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
+    <title>添加订单</title>
     <link rel="stylesheet" href="../static/css/info.css" th:href="@{css/info.css}" />
     <style>
         #b{
@@ -15,47 +13,47 @@
             text-align: right;
         }
         body{
-           background-color: aliceblue;
+            background-color: aliceblue;
         }
     </style>
 </head>
 <body>
-<div id="b">
-    <form  class="elegant-aero">
-        <label>
-            <span>货物号：</span>
-            <input type="text" required="required" id="text_goodsID" value="123"/>
-        </label>
-        <label>
-            <span>货物数量：</span>
-            <input type="number" name="points" min="1" id="text_goodsNum" value="123" />
-        </label>
 
-        <label>
-            <span>执行操作：</span>
-            <label for="text_input"><input id="text_input" type="radio"  name="chose" checked="checked">入库</label>
-            <label for="text_output"><input id="text_output" type="radio"  name="chose">出库</label>
-        </label>
+<div>
+    <label>
+        <span>货物号：</span>
+        <input type="text" required="required" id="text_goodsID" value="123"/>
+    </label>
+    <label>
+        <span>货物数量：</span>
+        <input type="number" name="points" min="1" id="text_goodsNum" value="123" />
+    </label>
 
-        <label>
-            <span>目标仓库号：</span>
-            <input type="text" required="required" id="text_warehouseID" value="123">
-        </label>
+    <label>
+        <span>执行操作：</span>
+        <label for="text_input"><input id="text_input" type="radio"  name="chose" checked="checked">入库</label>
+        <label for="text_output"><input id="text_output" type="radio"  name="chose">出库</label>
+    </label>
 
-        <label>
-            <button class=".btn-default" onclick="postOrder()">生成订单</button>
-        </label>
-    </form>
+    <label>
+        <span>目标仓库号：</span>
+        <input type="text" required="required" id="text_warehouseID" value="C123">
+    </label>
+
+    <label>
+        <button class=".btn-default" onclick="postOrder()">生成订单</button>
+    </label>
 </div>
 </body>
+
 
 <script src="../static/js/jquery-1.8.2.min.js" th:src="@{js/jquery-1.8.2.min.js}"></script>
 <script type="text/javascript">
 
     function postOrder() {
-        alert("here");
+
         var requestURL = "order/postOrder";
-        alert(requestURL);
+
         var goodsID = $("#text_goodsID").val();
         var goodsNum =$("#text_goodsNum").val();
         var warehouseID = $("#text_warehouseID").val();
@@ -73,7 +71,7 @@
             "goodsID":goodsID,
             "goodsNum":goodsNum,
             "direction":direction,
-            "toStorageID":warehouseID
+            "warehouseID":warehouseID
         };
 
         $.ajax({
@@ -90,7 +88,7 @@
                     console.log(result.msg);
 
                 } else  {
-                   alert(result.msg);
+                    alert(result.msg);
 
                 }
             },

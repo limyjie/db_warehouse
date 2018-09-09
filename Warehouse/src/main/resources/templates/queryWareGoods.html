@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>订单查询</title>
+    <title>查询库房库存</title>
     <style type="text/css">
         .btn {
             background-color: #e8edff;
@@ -51,10 +51,10 @@
     </style>
 </head>
 <body>
-<h2 class="h">查询订单：</h2>
-<input type="text" value="1009" id="text_order_id">
+<h2 class="h">查询库存：</h2>
+<input type="text" value="w1" id="text_warehouse_id">
 <div class="div">
-    <button class="btn" onclick="queryOrderByID()" >根据ID查询订单</button>
+    <button class="btn" onclick="queryOrderByID()" >根据库房ID查询货物</button>
 </div>
 
 <table id="rounded-corner">
@@ -70,8 +70,8 @@
 <script type="text/javascript">
 
     function queryOrderByID() {
-        var requestURL = "order/queryOrderByID";
-        var orderID =$("#text_order_id").val();
+        var requestURL = "order/queryWareGoods";
+        var orderID =$("#text_warehouse_id").val();
 
         $.ajax({
             type: "POST",
@@ -91,27 +91,20 @@
 
 
                     $('#orderList').append(
-                        "<th scope='col'>订单编号</th>" +
+                        "<th scope='col'>库房编号</th>" +
                         "<th scope='col'>货物编号</th>"+
-                        "<th scope='col'>操作员账号</th>"+
-                        "<th scope='col'>调度方向</th>" +
-                        "<th scope='col'>目标仓库</th>" +
-                        "<th scope='col'>是否执行</th>" +
-                        "<th scope='col'>创建时间</th>" +
-                        "<th scope='col'>最后修改时间</th>" +
-                        "<th scope='col'>总金额</th>" );
+                        "<th scope='col'>货物数量</th>"
+                       );
 
+                    for (var i =0 ;i<result.data.length;i++){
                         $('#orderList').append("<tr>" +
-                            "<td>"+result.data.orderID+"</td>" +
-                            "<td>"+result.data.goodsID+"</td>" +
-                            "<td>"+result.data.operatorAccount+"</td>" +
-                            "<td>"+result.data.direction+"</td>" +
-                            "<td>"+result.data.warehouseID+"</td>" +
-                            "<td>"+result.data.executed+"</td>" +
-                            "<td>"+result.data.lastModifyTime+"</td>" +
-                            "<td>"+result.data.createTime+"</td>" +
-                            "<td>"+result.data.totalValue+"</td>" +
+                            "<td>"+result.data[i].warehouseID+"</td>" +
+                            "<td>"+result.data[i].goodsID+"</td>" +
+                            "<td>"+result.data[i].goodsNum+"</td>" +
                             "</tr>");
+                    }
+
+
                 } else  {
                     alert(result.msg);
                     console.log(result.msg);

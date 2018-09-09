@@ -1,43 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>管理员登录</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- CSS -->
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
-    <link rel="stylesheet" href="../static/css/reset.css" th:href="@{css/reset.css}">
-    <link rel="stylesheet" href="../static/css/supersized.css" th:href="@{css/supersized.css}">
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{css/style.css}">
-
+    <title>管理员登陆</title>
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/login_style.css">
 </head>
 <body>
 
-    <div class="page-container">
-    <h1>管理员登录</h1>
-    <div >
-        <input type="text" name="username" class="username" id="text_account" value="root" placeholder="Username">
-        <input type="password" name="password" class="password" id="text_password" value="root" placeholder="Password">
-        <button onclick="startLogin()">Sign me in</button>
+<div class="text-center" style="margin-top: 5%">
+    <h1>仓库管理系统</h1>
+</div>
 
+<div>
+    <div class="form row">
+        <div class="form-horizontal col-md-offset-3" id="login_form">
+            <div class="col-md-9">
+                <div class="form-group">
+                    <i class="fa fa-user fa-lg"></i>
+                    <input class="form-control required" type="text" placeholder="Username" id="text_account" value="root" autofocus="autofocus" maxlength="20"/>
+                </div>
+                <div class="form-group">
+                    <i class="fa fa-lock fa-lg"></i>
+                    <input class="form-control required" type="password" placeholder="Password" id="text_password" value="root" maxlength="8"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox">
+                        <input type="checkbox" name="remember" value="1"/>记住我
+                    </label>
+                </div>
+
+                <div class="form-group col-md-offset-9">
+                    <button  class="btn btn-success pull-right" onclick=startLogin()>登录</button>
+
+                    <a href="http://www.stackoverflow.com/">
+                        <button class="btn btn-success pull-left">注册</button>
+                    </a>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 
 </body>
-<!-- Javascript -->
-<script src="../static/js/jquery-1.8.2.min.js" th:src="@{js/jquery-1.8.2.min.js}"></script>
 
-<script src="../static/js/supersized.3.2.7.min.js" th:src="@{js/supersized.3.2.7.min.js}"> </script>
-
-<script src="../static/js/supersized-init.js" th:src="@{js/supersized-init.js}"></script>
-
-<script src="../static/js/scripts.js" th:src="@{js/scripts.js}"></script>
-
-
+<script type="text/javascript" src="../static/js/jquery-1.8.2.min.js" th:src="@{js/jquery-1.8.2.min.js}"></script>
 <script type="text/javascript">
 
     function startLogin() {
@@ -76,5 +90,7 @@
             }
         });
     }
+
+
 </script>
 </html>

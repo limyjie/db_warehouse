@@ -1,116 +1,91 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>导航</title>
-<head>
-
-<style type="text/css">
-body{margin:0;padding:0;overflow-x:hidden;}
-html, body{height:100%;}
-img{border:none;}
-*{font-family:'微软雅黑';font-size:12px;color:#626262;}
-dl,dt,dd{display:block;margin:0;}
-a{text-decoration:none;}
-
-#bg{background-image:url(../static/img/content/dotted.png);}
-.container{width:100%;height:100%;margin:auto;}
-
-/*left*/
-.leftsidebar_box{width:160px;height:auto !important;overflow:visible !important;position:fixed;height:100% !important;background-color:#3992d0;}
-.line{height:2px;width:100%;background-image:url(../static/img/left/line_bg.png);background-repeat:repeat-x;}
-.leftsidebar_box dt{padding-left:40px;padding-right:10px;background-repeat:no-repeat;background-position:10px center;color:#f5f5f5;font-size:14px;position:relative;line-height:48px;cursor:pointer;}
-.leftsidebar_box dd{background-color:#317eb4;padding-left:40px;}
-.leftsidebar_box dd a{color:#f5f5f5;line-height:20px;}
-.leftsidebar_box dt img{position:absolute;right:10px;top:20px;}
-.system_log dt{background-image:url(../static/img/left/system.png)}
-.channel dt{background-image:url(../static/img/left/channel.png)}
-.syetem_management dt{background-image:url(../static/img/left/syetem_management.png)}
-.source dt{background-image:url(../static/img/left/source.png)}
-.leftsidebar_box dl dd:last-child{padding-bottom:10px;}
-.rightside {width:100%;height: 800px;margin-left: 160px;}
-
-</style>
-
-</head>
+    <meta charset="utf-8"/>
+    <title>导航</title>
+    <link rel="stylesheet" th:href="@{css/navigation.css}"/>
 
 <body id="bg">
-
+<img  th:src="@{img/left/select_xl01.png}"/>
 <div class="container">
 
-	<div class="leftsidebar_box">
-		<div class="line"></div>
-		<dl class="system_log">
-			<dt onClick="changeImage()">订单管理<img src="../static/img/left/select_xl01.png" th:src="@{/img/left/select_xl01.png}"></dt>
-			<dd onclick="menuClick('index')"><a href="#">生成订单</a></dd>
-			<dd onclick="menuClick('dispatch')"><a href="#">订单调度</a></dd>
-		</dl>
-	
-		<dl class="channel">
+    <div class="leftsidebar_box">
+        <div class="line"></div>
+        <dl class="system_log">
+            <dt>订单管理</dt>
+            <dd onclick="menuClick('addOrder')"><a href="#">生成订单</a></dd>
+            <dd onclick="menuClick('dispatch')"><a href="#">订单调度</a></dd>
+            <dd onclick="menuClick('deleteOrder')"><a href="#">删除订单</a></dd>
+        </dl>
 
-			<dt>订单查询<img src="../static/img/left/select_xl01.png"></dt>
-			<dd onclick="menuClick('allOrder')" class="first_dd"><a href="#">所有订单</a></dd>
-			<dd onclick="menuClick('finishedOrder')" ><a href="#">已完成订单</a></dd>
-			<dd onclick="menuClick('unfinishedOrder')"><a href="#">未完成订单</a></dd>
-			<dd onclick="menuClick('OrderByID')"><a href="#">查询订单[ID]</a></dd>
+        <dl class="channel">
 
-
-		</dl>
-
-		<dl class="source">
-			<dt>库房管理<img src="../static/img/left/select_xl01.png" th:src="@{img/left/select_xl01.png}"></dt>
-			<dd onclick="menuClick('queryWarehouse')" ><a href="#">查询库房</a></dd>
-			<dd onclick="menuClick('addWarehouse')" ><a href="#">添加库房</a></dd>
-
-		</dl>
-
-		<dl class="source">
-			<dt>货物管理<img src="../static/img/left/select_xl01.png" th:src="@{img/left/select_xl01.png}"></dt>
-			<dd onclick="menuClick('queryAllGoods')" ><a href="#">查询所有货物</a></dd>
-			<dd onclick="menuClick('addGoods')" ><a href="#">添加货物</a></dd>
-
-		</dl>
+            <dt>订单查询</dt>
+            <dd onclick="menuClick('allOrder')" class="first_dd"><a href="#">所有订单</a></dd>
+            <dd onclick="menuClick('finishedOrder')"><a href="#">已完成订单</a></dd>
+            <dd onclick="menuClick('unfinishedOrder')"><a href="#">未完成订单</a></dd>
+            <dd onclick="menuClick('OrderByID')"><a href="#">查询订单[ID]</a></dd>
 
 
-	
-	</div>
+        </dl>
 
-	<div class="rightside">
-		<div>
-			<iframe id="iframe-page-content" src="" width="100%"  frameborder="no" border="0" marginwidth="0" marginheight=" 0" scrolling="no" allowtransparency="yes"></iframe>
-		</div>
-	</div>
+        <dl class="source">
+            <dt>库房管理</dt>
+            <dd onclick="menuClick('queryWarehouse')"><a href="#">查询库房</a></dd>
+            <dd onclick="menuClick('addWarehouse')"><a href="#">添加库房</a></dd>
+            <dd onclick="menuClick('queryWareGoods')"><a href="#">查询库存</a></dd>
+
+        </dl>
+
+        <dl class="source">
+            <dt>货物管理]</dt>
+            <dd onclick="menuClick('queryAllGoods')"><a href="#">查询所有货物</a></dd>
+            <dd onclick="menuClick('addGoods')"><a href="#">添加货物</a></dd>
+
+        </dl>
+
+
+    </div>
+
+    <div class="rightside">
+        <div>
+            <iframe id="iframe-page-content" src="" width="100%" frameborder="no" border="0" marginwidth="0"
+                    marginheight=" 0" scrolling="no" allowtransparency="yes">
+
+            </iframe>
+        </div>
+    </div>
 
 </div>
 
 <script type="text/javascript" src="../static/js/jquery.js" th:src="@{js/jquery.js}"></script>
 <script type="text/javascript">
-$(".leftsidebar_box dt").css({"background-color":"#3992d0"});
-$(".leftsidebar_box dt img").attr("src","../static/img/left/select_xl01.png");
-$(function (){
-	$(".leftsidebar_box dd").hide();
-	$(".leftsidebar_box dt").click(function(){
-		$(".leftsidebar_box dt").css({"background-color":"#3992d0"})
-		$(this).css({"background-color": "#317eb4"});
-		$(this).parent().find('dd').removeClass("menu_chioce");
-		$(".leftsidebar_box dt img").attr("src","../static/img/left/select_xl01.png");
-		$(this).parent().find('img').attr("src","../static/img/left/select_xl.png");
-		$(".menu_chioce").slideUp(); 
-		$(this).parent().find('dd').slideToggle();
-		$(this).parent().find('dd').addClass("menu_chioce");
-	});
-})
+    $(".leftsidebar_box dt").css({"background-color": "#3992d0"});
+    $(".leftsidebar_box dt img").attr("src", "../static/img/left/select_xl01.png");
+    $(function () {
+        $(".leftsidebar_box dd").hide();
+        $(".leftsidebar_box dt").click(function () {
+            $(".leftsidebar_box dt").css({"background-color": "#3992d0"})
+            $(this).css({"background-color": "#317eb4"});
+            $(this).parent().find('dd').removeClass("menu_chioce");
+            $(".leftsidebar_box dt img").attr("src", "../static/img/left/select_xl01.png");
+            $(this).parent().find('img').attr("src", "../static/img/left/select_xl.png");
+            $(".menu_chioce").slideUp();
+            $(this).parent().find('dd').slideToggle();
+            $(this).parent().find('dd').addClass("menu_chioce");
+        });
+    })
 </script>
 
 <script type="text/javascript">
-	$(function() {
-		var height=document.documentElement.clientHeight;
-		document.getElementById('iframe-page-content').style.height=height+'px';
-	});
+    $(function () {
+        var height = document.documentElement.clientHeight;
+        document.getElementById('iframe-page-content').style.height = height + 'px';
+    });
 
-	function menuClick(menuUrl) {
-		$("#iframe-page-content").attr('src',menuUrl);
-	};
+    function menuClick(menuUrl) {
+        $("#iframe-page-content").attr('src', menuUrl);
+    };
 
 </script>
 

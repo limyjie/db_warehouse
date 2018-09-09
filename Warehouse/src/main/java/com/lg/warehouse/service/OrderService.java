@@ -26,4 +26,10 @@ public interface OrderService {
 
     //根据订单id查订单
     ResponseDTO<Order> queryOrderByID(String orderID);
+
+    //根据ID删除订单
+    ResponseDTO<Order> deleteOrder(String orderID);
+
+    //删除所有已完成订单
+    ResponseDTO<Order> deleteFinishedOrder();
 }

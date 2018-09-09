@@ -10,6 +10,7 @@ import com.lg.warehouse.entity.*;
 import com.lg.warehouse.service.GoodsService;
 import com.lg.warehouse.service.OrderService;
 import com.lg.warehouse.service.WarehouseService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,12 +39,13 @@ public class TransactionController {
     @Autowired
     private GoodsService goodsService;
 
-    //提交新的订单（出库/入库）
+
     @PostMapping(value = "/postOrder")
     public ResponseDTO<Order> postOrder(@RequestBody String params, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
 
-        Order order = JSON.parseObject(params,Order.class);
 
+        System.out.println("//提交新的订单（出库/入库）");
+        Order order = JSON.parseObject(params,Order.class);
 
 
         Employee  operator = (Employee)httpServletRequest.getSession().getAttribute("session_employee_name");
@@ -157,5 +159,25 @@ public class TransactionController {
         return goodsService.getAllGoods();
     }
 
+
+    @PostMapping(value = "deleteOrderByID")
+    public ResponseDTO<Order> deleteOrder(@RequestBody String params){
+
+        System.out.println(params);
+        return orderService.deleteOrder(params);
+    }
+
+
+    @GetMapping(value = "deleteFinishedOrder")
+    public ResponseDTO<Order> deleteFinishedOrder(){
+        return orderService.deleteFinishedOrder();
+    }
+
+    @PostMapping(value = "queryWareGoods")
+    public ResponseDTO<List<WareGoods>> queryWareGoods(@RequestBody String params){
+        System.out.println(params);
+
+        return warehouseService.queryFinishedOrder(params);
+    }
 }
 

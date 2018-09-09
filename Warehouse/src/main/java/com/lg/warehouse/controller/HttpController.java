@@ -44,36 +44,47 @@ public class HttpController {
         return "navigation";
     }
 
-    @GetMapping(value = "dispatch")
+    @GetMapping(value = "/dispatch")
     public String getDispatchPage(){
         return "dispatch";
     }
 
 
 
-    @GetMapping(value = "queryWarehouse")
+    @GetMapping(value = "/queryWarehouse")
     public String getQueryWarePage(){
         return "queryWarehouse";
     }
 
 
-    @GetMapping(value = "addWarehouse")
+    @GetMapping(value = "/addWarehouse")
     public String getAddyWarePage(){
         return "addWarehouse";
     }
 
-    @GetMapping(value = "queryAllGoods")
+    @GetMapping(value = "/queryAllGoods")
     public String getQueryGoodsPage(){
         return "queryAllGoods";
     }
 
-    @GetMapping(value = "addGoods")
+    @GetMapping(value = "/addGoods")
     public String getAddGoodsPage(){
         return "addGoods";
     }
 
-    @GetMapping(value = "OrderByID")
+    @GetMapping(value = "/OrderByID")
     public String getOrderByIDPage(){return "OrderByID";}
+
+    @GetMapping(value = "/deleteOrder")
+    public String getDeleteOrderPage(){return "deleteOrder";}
+
+    @GetMapping(value = "/addOrder")
+    public String getAddOrderPage(){return "addOrder";}
+
+    @GetMapping(value = "/queryWareGoods")
+    public String getWareGoodsPage(){
+        return "queryWareGoods";
+    }
 
 
 }

@@ -10,16 +10,12 @@ import java.sql.Timestamp;
  **/
 public class Order {
 
-    //必要参数
     private String orderID;
     private String operatorAccount;
     private String goodsID;
     private String goodsNum;
-    //可选参数
     private String totalValue;
-    private String fromStorageID;
-    private String toStorageID;
-    private String location;
+    private String warehouseID;
     private String direction;
     private String executed;
     private Timestamp createTime;
@@ -28,214 +24,112 @@ public class Order {
     public Order() {
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderID='" + orderID + '\'' +
-                "operatorAccount='" + operatorAccount + '\'' +
-                ", goodsID='" + goodsID + '\'' +
-                ", goodsNum='" + goodsNum + '\'' +
-                ", totalValue='" + totalValue + '\'' +
-                ", fromStorageID='" + fromStorageID + '\'' +
-                ", toStorageID='" + toStorageID + '\'' +
-                ", location='" + location + '\'' +
-                ", direction='" + direction + '\'' +
-                ", executed='" + executed + '\'' +
-                ", createTime='" + createTime + '\'' +
-                ", lastModifyTime='" + lastModifyTime + '\'' +
-                '}';
+    public String getOrderID() {
+        return orderID;
     }
 
     public void setOrderID(String orderID) {
         this.orderID = orderID;
     }
 
-    public void setOperatorAccount(String operatorAccount) {
-        this.operatorAccount = operatorAccount;
-    }
-
-    public String getOrderID() {
-
-        return orderID;
-    }
-
     public String getOperatorAccount() {
         return operatorAccount;
     }
 
-    public Order(String orderID ,String goodsID, String goodsNum, String toStorageID, String location) {
-        this.orderID = orderID;
-        this.goodsID = goodsID;
-        this.goodsNum = goodsNum;
-        this.toStorageID = toStorageID;
-        this.location = location;
-    }
-
-    public void setOperator(String operatorAccount) {
+    public void setOperatorAccount(String operatorAccount) {
         this.operatorAccount = operatorAccount;
-    }
-
-    public void setGoodsID(String goodsID) {
-        this.goodsID = goodsID;
-    }
-
-    public void setGoodsNum(String goodsNum) {
-        this.goodsNum = goodsNum;
-    }
-
-    public void setTotalValue(String totalValue) {
-        this.totalValue = totalValue;
-    }
-
-    public void setFromStorageID(String fromStorageID) {
-        this.fromStorageID = fromStorageID;
-    }
-
-    public void setToStorageID(String toStorageID) {
-        this.toStorageID = toStorageID;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
-
-    public void setExecuted(String executed) {
-        this.executed = executed;
-    }
-
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
-
-    public void setLastModifyTime(Timestamp lastModifyTime) {
-        this.lastModifyTime = lastModifyTime;
-    }
-
-    public String getOperator() {
-        return operatorAccount;
     }
 
     public String getGoodsID() {
         return goodsID;
     }
 
+    public void setGoodsID(String goodsID) {
+        this.goodsID = goodsID;
+    }
+
     public String getGoodsNum() {
         return goodsNum;
+    }
+
+    public void setGoodsNum(String goodsNum) {
+        this.goodsNum = goodsNum;
     }
 
     public String getTotalValue() {
         return totalValue;
     }
 
-    public String getFromStorageID() {
-        return fromStorageID;
+    public void setTotalValue(String totalValue) {
+        this.totalValue = totalValue;
     }
 
-    public String getToStorageID() {
-        return toStorageID;
+    public String getWarehouseID() {
+        return warehouseID;
     }
 
-    public String getLocation() {
-        return location;
+    public void setWarehouseID(String warehouseID) {
+        this.warehouseID = warehouseID;
     }
 
     public String getDirection() {
         return direction;
     }
 
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
     public String getExecuted() {
         return executed;
+    }
+
+    public void setExecuted(String executed) {
+        this.executed = executed;
     }
 
     public Timestamp getCreateTime() {
         return createTime;
     }
 
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
     public Timestamp getLastModifyTime() {
         return lastModifyTime;
     }
 
-    private Order(Builder builder){
-
-        this.operatorAccount = builder.operatorAccount;
-        this.goodsID = builder.goodsID;
-        this.goodsNum = builder.goodsNum;
-        this.createTime = builder.createTime;
-        this.executed = builder.executed;
-        this.direction  =builder.direction;
-        this.location = builder.location;
-        this.toStorageID =builder.toStorageID;
-        this.fromStorageID = builder.fromStorageID;
-        this.lastModifyTime =builder.lastModifyTime;
-        this.createTime = builder.createTime;
-        this.totalValue = builder.totalValue;
-
+    public void setLastModifyTime(Timestamp lastModifyTime) {
+        this.lastModifyTime = lastModifyTime;
     }
 
-    public static class Builder{
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderID='" + orderID + '\'' +
+                ", operatorAccount='" + operatorAccount + '\'' +
+                ", goodsID='" + goodsID + '\'' +
+                ", goodsNum='" + goodsNum + '\'' +
+                ", totalValue='" + totalValue + '\'' +
+                ", warehouseID='" + warehouseID + '\'' +
+                ", direction='" + direction + '\'' +
+                ", executed='" + executed + '\'' +
+                ", createTime=" + createTime +
+                ", lastModifyTime=" + lastModifyTime +
+                '}';
+    }
 
-        private String operatorAccount;
-        private String goodsID;
-        private String goodsNum;
-        private String totalValue;
-        private String fromStorageID;
-        private String toStorageID;
-        private String location;
-        private String direction;
-        private String executed;
-        private Timestamp createTime;
-        private Timestamp lastModifyTime;
-
-        public Builder(String operatorAccount,String goodsID,String goodsNum){
-            this.operatorAccount = operatorAccount;
-            this.goodsID = goodsID;
-            this.goodsNum = goodsNum;
-        }
-
-        public Builder totalValue(String totalValue){
-            this.totalValue = totalValue;
-            System.out.println("total value:"+totalValue);
-            return this;
-        }
-
-        public Builder fromStorageID(String storageID){
-            this.fromStorageID = storageID;
-            return this;
-        }
-
-        public Builder location(String location){
-            this.location = location;
-            return this;
-        }
-
-        public Builder direction(String direction){
-            this.direction = direction;
-            return this;
-        }
-        public Builder executed(String executed){
-            this.executed = executed;
-            return this;
-        }
-        public Builder createTime(Timestamp createTime){
-            this.createTime = createTime;
-            return this;
-        }
-        public Builder lastModifyTime(Timestamp lastModifyTime){
-            this.lastModifyTime = lastModifyTime;
-            return this;
-        }
-        public Builder toStorageID(String storageID){
-            this.toStorageID = storageID;
-            return this;
-        }
-
-        public Order build(){
-            return new Order(this);
-        }
-
+    public Order(String orderID, String operatorAccount, String goodsID, String goodsNum, String totalValue, String warehouseID, String direction, String executed, Timestamp createTime, Timestamp lastModifyTime) {
+        this.orderID = orderID;
+        this.operatorAccount = operatorAccount;
+        this.goodsID = goodsID;
+        this.goodsNum = goodsNum;
+        this.totalValue = totalValue;
+        this.warehouseID = warehouseID;
+        this.direction = direction;
+        this.executed = executed;
+        this.createTime = createTime;
+        this.lastModifyTime = lastModifyTime;
     }
 }

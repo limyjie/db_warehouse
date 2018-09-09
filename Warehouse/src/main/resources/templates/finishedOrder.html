@@ -88,27 +88,37 @@
                 $("#orderList").html("");
                 if (result.status == 0) {//成功
 
-                    console.log(result.msg);
                     console.log(result.data);
                     var array = result.data;
 
-                    $('#orderList').append( "<th scope='col'>订单编号</th>" +
-                        "<th scope='col'>操作员</th>"+
+                    $('#orderList').append(
+                        "<th scope='col'>订单编号</th>" +
                         "<th scope='col'>货物编号</th>"+
-                        "<th scope='col'>货物数量</th>" +
-                        "<th scope='col'>总金额</th>" );
+                        "<th scope='col'>货物数量</th>"+
+                        "<th scope='col'>操作员账号</th>"+
+                        "<th scope='col'>调度方向</th>" +
+                        "<th scope='col'>目标仓库</th>" +
+                        "<th scope='col'>是否执行</th>" +
+                        "<th scope='col'>创建时间</th>" +
+                        "<th scope='col'>最后修改时间</th>" +
+                        "<th scope='col'>总金额</th>"
+                    );
 
-                    for(i = 0 ;i<array.length;i++){
-                        //console.log(array[i].orderID);
-                        //console.log(array[i].operatorAccount);
-                        //console.log(array[i].goodsID);
+                    for (var i = 0; i < array.length; i++) {
+
                         $('#orderList').append("<tr>" +
                             "<td>"+array[i].orderID+"</td>" +
-                            "<td>"+array[i].operatorAccount+"</td>" +
                             "<td>"+array[i].goodsID+"</td>" +
                             "<td>"+array[i].goodsNum+"</td>" +
+                            "<td>"+array[i].operatorAccount+"</td>" +
+                            "<td>"+array[i].direction+"</td>" +
+                            "<td>"+array[i].warehouseID+"</td>" +
+                            "<td>"+array[i].executed+"</td>" +
+                            "<td>"+array[i].lastModifyTime+"</td>" +
+                            "<td>"+array[i].createTime+"</td>" +
                             "<td>"+array[i].totalValue+"</td>" +
                             "</tr>");
+
                     }
 
                 } else  {
