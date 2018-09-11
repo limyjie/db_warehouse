@@ -12,38 +12,49 @@ import java.util.Arrays;
 public class Employee {
 
     private String account;
+    private String employeeName;
     private String password;
-    private String[] authorities;
+    private String authorities;
 
     public Employee(String account,String password){
         this.account = account;
         this.password =password;
     }
 
-    public Employee(String account,String password,String[] authorities){
+    public Employee(String account,String employeeName,String password,String authorities){
         this.account = account;
+        this.employeeName = employeeName;
         this.password =password;
         this.authorities = authorities;
+
     }
 
     public Employee(){}
-
 
     @Override
     public String toString() {
         return "Employee{" +
                 "account='" + account + '\'' +
+                ", employeeName='" + employeeName + '\'' +
                 ", password='" + password + '\'' +
-                ", authorities=" + Arrays.toString(authorities) +
+                ", authorities='" + authorities + '\'' +
                 '}';
     }
 
-    public void setAuthorities(String[] authorities) {
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public void setAuthorities(String authorities) {
 
         this.authorities = authorities;
     }
 
-    public String[] getAuthorities() {
+    public String getAuthorities() {
 
         return authorities;
     }

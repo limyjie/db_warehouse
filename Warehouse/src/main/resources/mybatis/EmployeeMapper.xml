@@ -10,8 +10,8 @@
 
     <insert id="addEmployeeByEntity" parameterType="com.lg.warehouse.entity.Employee">
         INSERT INTO tb_employee
-        (account,password,authorities)
-        VALUES (#{account},#{password},#{authority})
+        (account,password,authorities,employee_name)
+        VALUES (#{account},#{password},#{authorities},#{employeeName})
     </insert>
 
     <select id="queryIdentityNum" parameterType="String" resultType="String">
@@ -19,5 +19,19 @@
         FROM tb_iden_num
         WHERE iden_num=#{idenNum}
     </select>
+
+    <delete id="deleteEmployeeByID" parameterType="String">
+        DELETE
+        FROM tb_employee
+        WHERE account = #{account}
+    </delete>
+
+    <select id="queryAllEmployee" resultType="com.lg.warehouse.entity.Employee">
+        SELECT *
+        FROM tb_employee
+        WHERE authorities = "employee"
+    </select>
+
+
 
 </mapper>

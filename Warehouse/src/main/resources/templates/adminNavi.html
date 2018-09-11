@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>仓库管理系统</title>
+    <link rel="stylesheet" th:href="@{css/navigation.css}"/>
+
+<body id="bg">
+<div class="container">
+
+    <div class="leftsidebar_box">
+        <div class="line"></div>
+        <dl class="system_log">
+            <dt>订单管理</dt>
+            <dd onclick="menuClick('addOrder')"><a href="#">生成订单</a></dd>
+            <dd onclick="menuClick('dispatch')"><a href="#">订单调度</a></dd>
+            <dd onclick="menuClick('deleteOrder')"><a href="#">删除订单</a></dd>
+        </dl>
+
+        <dl class="channel">
+
+            <dt>订单查询</dt>
+            <dd onclick="menuClick('allOrder')" class="first_dd"><a href="#">所有订单</a></dd>
+            <dd onclick="menuClick('finishedOrder')"><a href="#">已完成订单</a></dd>
+            <dd onclick="menuClick('unfinishedOrder')"><a href="#">未完成订单</a></dd>
+            <dd onclick="menuClick('OrderByID')"><a href="#">查询订单[ID]</a></dd>
+
+
+        </dl>
+
+        <dl class="source">
+            <dt>库房管理</dt>
+            <dd onclick="menuClick('queryWarehouse')"><a href="#">查询库房</a></dd>
+            <dd onclick="menuClick('addWarehouse')"><a href="#">添加库房</a></dd>
+            <dd onclick="menuClick('queryWareGoods')"><a href="#">查询库存</a></dd>
+
+        </dl>
+
+        <dl class="syetem_management">
+            <dt>货物管理]</dt>
+            <dd onclick="menuClick('queryAllGoods')"><a href="#">查询所有货物</a></dd>
+            <dd onclick="menuClick('addGoods')"><a href="#">添加货物</a></dd>
+
+        </dl>
+
+        <dl class="custom">
+            <dt>账号管理]</dt>
+            <dd onclick="menuClick('register')"><a href="#">添加职员账号</a></dd>
+            <dd onclick="menuClick('deleteEmployee')"><a href="#">删除职员账号</a></dd>
+            <dd onclick="menuClick('allEmployee')"><a href="#">所有职员账号</a></dd>
+        </dl>
+
+
+    </div>
+
+    <div class="rightside">
+        <div>
+            <iframe id="iframe-page-content" src="" width="100%" frameborder="no" border="0" marginwidth="0"
+                    marginheight=" 0" scrolling="no" allowtransparency="yes">
+
+            </iframe>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="../static/js/jquery.js" th:src="@{js/jquery.js}"></script>
+<script type="text/javascript">
+    $(".leftsidebar_box dt").css({"background-color": "#3992d0"});
+    $(".leftsidebar_box dt img").attr("src", "../static/img/left/select_xl01.png");
+    $(function () {
+        $(".leftsidebar_box dd").hide();
+        $(".leftsidebar_box dt").click(function () {
+            $(".leftsidebar_box dt").css({"background-color": "#3992d0"})
+            $(this).css({"background-color": "#317eb4"});
+            $(this).parent().find('dd').removeClass("menu_chioce");
+            $(".leftsidebar_box dt img").attr("src", "../static/img/left/select_xl01.png");
+            $(this).parent().find('img').attr("src", "../static/img/left/select_xl.png");
+            $(".menu_chioce").slideUp();
+            $(this).parent().find('dd').slideToggle();
+            $(this).parent().find('dd').addClass("menu_chioce");
+        });
+    })
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var height = document.documentElement.clientHeight;
+        document.getElementById('iframe-page-content').style.height = height + 'px';
+    });
+
+    function menuClick(menuUrl) {
+        $("#iframe-page-content").attr('src', menuUrl);
+    };
+
+</script>
+
+</body>
+</html>

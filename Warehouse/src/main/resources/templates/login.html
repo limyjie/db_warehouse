@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>管理员登陆</title>
+    <title>用户登陆</title>
     <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -32,11 +32,6 @@
 
                 <div class="form-group col-md-offset-9">
                     <button  class="btn btn-success pull-right" onclick=startLogin()>登录</button>
-
-                    <a href="register">
-                        <button class="btn btn-success pull-left">注册</button>
-                    </a>
-
                 </div>
             </div>
         </div>
@@ -54,6 +49,7 @@
         var account = $("#text_account").val();
         var password =$("#text_password").val();
         var openURL = "/navigation";
+        var adminURL = "/adminNavi";
 
         var data={
             "account":account,
@@ -74,10 +70,13 @@
                     console.log(result.msg);
                     window.open(openURL,"_self");
 
-                } else  {
-                    alert(result.msg);
+                } else  if(result.status == 1){
+                    window.open(adminURL,"_self");
                     console.log(result.msg);
 
+                }else{
+                    alert(result.msg);
+                    console.log(result.msg);
                 }
             },
             error: function () {

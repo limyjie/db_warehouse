@@ -2,17 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>查询库房</title>
+    <title>查询所有职员</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <link rel="stylesheet" href="../static/css/table.css" th:href="@{css/table.css}">
+
 
 </head>
 <body class="bg-info">
 
-    <button class="btn btn-primary" onclick="queryWarehouse()" >查询库房</button>
+
+<button class="btn btn-primary "   onclick="queryOrders()">查询所有职员</button>
 
 
 <table id="rounded-corner">
@@ -27,11 +28,11 @@
 
 <script type="text/javascript">
 
-   function queryWarehouse() {
-       console.log("start ");
-       var requestURL = "order/queryWare";
-       getData(requestURL);
-   }
+    function queryOrders() {
+        var requestURL = "employee/allEmployee";
+        getData(requestURL);
+    }
+
 
     function getData(requestURL) {
         $.ajax({
@@ -46,30 +47,27 @@
                 $("#orderList").html("");
                 if (result.status == 0) {//成功
 
-                    console.log(result.msg);
                     console.log(result.data);
-
                     var array = result.data;
 
-                    $('#orderList').append( "<th scope='col'>库房编号</th>" +
-                        "<th scope='col'>库房名</th>"+
-                        "<th scope='col'>库房位置</th>"+
-                        "<th scope='col'>最大容量</th>" +
-                        "<th scope='col'>剩余</th>" );
+                    $('#orderList').append(
+                        "<th scope='col'>账号</th>" +
+                        "<th scope='col'>姓名</th>" +
+                        "<th scope='col'>身份</th>"
+                    );
 
-                    for(i = 0 ;i<array.length;i++){
-                        console.log(array[i]);
+                    for (var i = 0; i < array.length; i++) {
+
                         $('#orderList').append("<tr>" +
-                            "<td>"+array[i].warehouseID+"</td>" +
-                            "<td>"+array[i].warehouseName+"</td>" +
-                            "<td>"+array[i].location+"</td>" +
-                            "<td>"+array[i].capacity+"</td>" +
-                            "<td>"+array[i].remain+"</td>" +
+
+                            "<td>" + array[i].account + "</td>" +
+                            "<td>" + array[i].employeeName + "</td>" +
+                            "<td>" + array[i].authorities + "</td>" +
                             "</tr>");
+
                     }
 
-                } else  {
-                    alert(result.msg);
+                } else {
                     console.log(result.msg);
 
                 }

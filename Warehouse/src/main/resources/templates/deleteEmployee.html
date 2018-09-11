@@ -2,27 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>查询库房库存</title>
+    <title>删除员工</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <link rel="stylesheet" href="../static/css/table.css" th:href="@{css/table.css}">
 
 </head>
 <body class="bg-info">
 
 <div style="padding: 100px 100px 10px; width: 50%">
-    <div class="bs-example bs-example-form" >
+    <div class="bs-example bs-example-form">
         <div class="input-group">
-            <span class="input-group-addon">库房编号</span>
-            <input type="text"  class="form-control" value="1009" id="text_warehouse_id">
+            <span class="input-group-addon">职员编号</span>
+            <input type="text"  class="form-control" placeholder="职员编号" id="text_account">
         </div>
         <br>
 
         <div class="input-group">
 
-            <button class="btn btn-primary"   onclick="queryOrderByID()">查询货物</button>
+            <button class="btn btn-primary"   onclick="deleteEmployeeByID()">根据ID删除职员</button>
 
         </div>
 
@@ -43,40 +42,28 @@
 
 <script type="text/javascript">
 
-    function queryOrderByID() {
-        var requestURL = "order/queryWareGoods";
-        var orderID =$("#text_warehouse_id").val();
+    function deleteEmployeeByID() {
+        var requestURL = "employee/deleteEmployee";
+        var account =$("#text_account").val();
+
+        if(account==""||account==null){
+            alert("账号不能为空");
+            return;
+        }
 
         $.ajax({
             type: "POST",
             url: requestURL,
             contentType: "text/plain;charset=utf-8",
             dataType: "json",
-            data: orderID,
-            async: false,
+            data: account,
+            async: true,
             success: function (result) {
 
                 $("#orderList").html("");
                 if (result.status == 0) {//成功
 
-                    console.log(result.msg);
-                    console.log(result.data);
-
-
-
-                    $('#orderList').append(
-                        "<th scope='col'>库房编号</th>" +
-                        "<th scope='col'>货物编号</th>"+
-                        "<th scope='col'>货物数量</th>"
-                       );
-
-                    for (var i =0 ;i<result.data.length;i++){
-                        $('#orderList').append("<tr>" +
-                            "<td>"+result.data[i].warehouseID+"</td>" +
-                            "<td>"+result.data[i].goodsID+"</td>" +
-                            "<td>"+result.data[i].goodsNum+"</td>" +
-                            "</tr>");
-                    }
+                    alert(result.msg);
 
 
                 } else  {

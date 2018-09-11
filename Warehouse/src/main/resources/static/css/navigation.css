@@ -99,9 +99,13 @@ a {
     background-image: url(../img/left/source.png)
 }
 
+
+.custom dt {
+    background-image: url(../img/left/custom.png)
+}
+
 .leftsidebar_box dl dd:last-child {
     padding-bottom: 10px;
-
 }
 
 .rightside {

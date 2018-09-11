@@ -86,5 +86,20 @@ public class HttpController {
         return "queryWareGoods";
     }
 
+    @GetMapping(value = "/adminNavi")
+    public String getAdminPage(){
+        return "adminNavi";
+    }
+
+    @GetMapping(value = "/deleteEmployee")
+    public String getDeleteEmployeePage(){
+        return "deleteEmployee";
+    }
+
+    @GetMapping(value = "/allEmployee")
+    public String getAllEmployeePage(){
+        return "allEmployee";
+    }
+
 
 }

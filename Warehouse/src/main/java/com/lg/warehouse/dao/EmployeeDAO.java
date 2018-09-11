@@ -3,6 +3,8 @@ package com.lg.warehouse.dao;
 
 import com.lg.warehouse.entity.Employee;
 
+import java.util.List;
+
 /**
  * @author lin
  * @ClassName AdminDAO
@@ -18,4 +20,8 @@ public interface EmployeeDAO {
 
 
     String queryIdentityNum(String idenNum);
+
+    int deleteEmployeeByID(String account);
+
+     List<Employee> queryAllEmployee();
 }

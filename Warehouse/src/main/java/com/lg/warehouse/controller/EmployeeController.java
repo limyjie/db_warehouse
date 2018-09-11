@@ -6,13 +6,11 @@ import com.lg.warehouse.entity.Employee;
 import com.lg.warehouse.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @author lin
@@ -33,7 +31,10 @@ public class EmployeeController {
     public ResponseDTO login(@RequestBody String params, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
 
         Employee employee = JSON.parseObject(params,Employee.class);
-        System.out.println("going to return"+employee.toString());
+
+        String authority = employee.getAuthorities();
+
+        System.out.println(authority);
         return employeeService.login(employee, httpServletRequest, httpServletResponse);
     }
 
@@ -41,16 +42,27 @@ public class EmployeeController {
     @PostMapping(value = "register")
     public ResponseDTO<Employee> register(@RequestBody String params, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
 
+        System.out.println("params"+params);
+
         //分离employee 和 idenNum
         Employee employee = JSON.parseObject(params,Employee.class);
 
         System.out.println(employee.toString());
 
-        System.out.println(params);
-        int pos = params.indexOf("idenNum");
-        System.out.println(pos);
-        String idenNum = params.substring(pos+10,pos+10+4);
-        System.out.println(idenNum);
-        return employeeService.register(employee,idenNum,httpServletRequest,httpServletResponse);
+        return employeeService.register(employee,httpServletRequest,httpServletResponse);
     }
+
+    @PostMapping(value = "deleteEmployee")
+    public ResponseDTO<Employee> deleteEmployee(@RequestBody String params,HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+
+
+
+        return employeeService.delete(params,httpServletRequest,httpServletResponse);
+    }
+
+    @GetMapping(value = "allEmployee")
+    public ResponseDTO<List<Employee>> queryAllEmployee(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+        return employeeService.allEmployee(httpServletRequest, httpServletResponse);
+    }
+
 }
